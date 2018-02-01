@@ -1,0 +1,3883 @@
+0  1915   block.) Because external variables are globally accessible, they can be used instead of 
+63  
+71  
+116  
+122  
+161  
+163  #include <stdio.h> 
+165  
+167  main() 
+169  { 
+171  printf("hello, world\n"); 
+173  } 
+175  
+181  
+183  cc hello.c 
+185  
+192  
+194  a.out 
+198  
+200  hello, world 
+215  
+217  #include <stdio.h> 
+231  
+238  that received no argument values 
+242  printf("hello, world\n"); main calls library function printf 
+244  to print this sequence of characters 
+250  
+255  
+257  printf("hello, world\n"); 
+273  
+275  printf("hello, world 
+277  "); 
+284  
+286  #include <stdio.h> 
+288  
+290  main() 
+292  { 
+294  printf("hello, "); 
+296  printf("world"); 
+298  printf("\n"); 
+300  } 
+321  
+323  1 -17 
+325  20 -6 
+327  40 4 
+329  60 15 
+331  80 26 
+333  100 37 
+335  120 48 
+337  140 60 
+339  160 71 
+341  180 82 
+343  200 93 
+345  220 104 
+347  240 115 
+349  260 126 
+351  280 137 
+353  300 148 
+360  
+362  #include <stdio.h> 
+364  
+366  /* print Fahrenheit-Celsius table 
+368  for fahr = 0, 20, ..., 300 */ 
+370  main() 
+372  { 
+374  int fahr, celsius; 
+376  int lower, upper, step; 
+378  
+380  lower = 0; /* lower limit of temperature scale */ 
+382  upper = 300; /* upper limit */ 
+384  step = 20; /* step size */ 
+386  
+388  fahr = lower; 
+390  while (fahr <= upper) { 
+392  celsius = 5 * (fahr-32) / 9; 
+394  printf("%d\t%d\n", fahr, celsius); 
+396  fahr = fahr + step; 
+398  } 
+400  } 
+404  
+406  /* print Fahrenheit-Celsius table 
+408  for fahr = 0, 20, ..., 300 */ 
+418  
+420  int fahr, celsius; 
+422  int lower, upper, step; 
+434  char 
+436  character - a single byte 
+438  short 
+440  short integer 
+442  long 
+444  long integer 
+446  double 
+448  double-precision floating point 
+458  
+460  lower = 0; 
+462  upper = 300; 
+464  step = 20; 
+472  
+474  
+476  while (fahr <= upper) { 
+478  ... 
+480  } 
+492  
+494  while (i < j) 
+496  i = 2 * i; 
+511  
+513  celsius = 5 * (fahr-32) / 9; 
+530  
+532  printf("%d\t%d\n", fahr, celsius); 
+557  
+559  printf("%3d %6d\n", fahr, celsius); 
+564  
+566  0 -17 
+568  20 -6 
+570  40 4 
+572  60 15 
+574  80 26 
+576  100 37 
+578  ... 
+586  
+588  #include <stdio.h> 
+590  
+592  /* print Fahrenheit-Celsius table 
+594  for fahr = 0, 20, ..., 300; floating-point version */ 
+596  main() 
+598  { 
+600  float fahr, celsius; 
+602  float lower, upper, step; 
+604  
+606  lower = 0; /* lower limit of temperatuire scale */ 
+608  upper = 300; /* upper limit */ 
+610  step = 20; /* step size */ 
+612  
+614  fahr = lower; 
+616  while (fahr <= upper) { 
+618  celsius = (5.0/9.0) * (fahr-32.0); 
+620  printf("%3.0f %6.1f\n", fahr, celsius); 
+622  fahr = fahr + step; 
+624  } 
+626  } 
+644  
+646  fahr = lower; 
+650  
+652  while (fahr <= upper) 
+661  0 -17.8 
+663  20 -6.7 
+665  40 4.4 
+667  ... 
+674  %d 
+676  print as decimal integer 
+678  %6d 
+680  print as decimal integer, at least 6 characters wide 
+682  %f 
+684  print as floating point 
+686  %6f 
+688  print as floating point, at least 6 characters wide 
+690  %.2f 
+692  print as floating point, 2 characters after decimal point 
+694  %6.2f 
+696  print as floating point, at least 6 wide and 2 after decimal point 
+712  
+714  #include <stdio.h> 
+716  
+718  /* print Fahrenheit-Celsius table */ 
+720  main() 
+722  { 
+724  int fahr; 
+726  
+728  for (fahr = 0; fahr <= 300; fahr = fahr + 20) 
+730  printf("%3d %6.1f\n", fahr, (5.0/9.0)*(fahr-32)); 
+732  } 
+749  
+751  fahr = 0 
+757  
+759  fahr <= 300 
+764  
+766  fahr = fahr + 20 
+789  #define name replacement list 
+796  
+798  #include <stdio.h> 
+800  
+802  #define LOWER 0 /* lower limit of table */ 
+804  #define UPPER 300 /* upper limit */ 
+806  #define STEP 20 /* step size */ 
+808  
+810  /* print Fahrenheit-Celsius table */ 
+812  main() 
+814  { 
+816  int fahr; 
+818  
+820  for (fahr = LOWER; fahr <= UPPER; fahr = fahr + STEP) 
+822  printf("%3d %6.1f\n", fahr, (5.0/9.0)*(fahr-32)); 
+824  } 
+848  
+850  c = getchar(); 
+857  
+859  putchar(c); 
+871  
+875  while (charater is not end-of-file indicator) 
+877  output the character just read 
+879  read a character 
+883  
+885  #include <stdio.h> 
+887  
+889  /* copy input to output; 1st version */ 
+891  main() 
+893  { 
+895  int c; 
+897  
+899  c = getchar(); 
+901  while (c != EOF) { 
+903  putchar(c); 
+905  c = getchar(); 
+907  } 
+909  } 
+932  
+934  c = getchar(); 
+941  
+943  #include <stdio.h> 
+945  
+947  /* copy input to output; 2nd version */ 
+949  main() 
+951  { 
+953  int c; 
+955  
+957  while ((c = getchar()) != EOF) 
+959  putchar(c); 
+961  } 
+977  
+979  c = getchar() != EOF 
+983  
+985  c = (getchar() != EOF) 
+999  
+1001  #include <stdio.h> 
+1003  
+1005  /* count characters in input; 1st version */ 
+1007  main() 
+1009  { 
+1011  long nc; 
+1013  
+1015  nc = 0; 
+1017  while (getchar() != EOF) 
+1019  ++nc; 
+1021  printf("%ld\n", nc); 
+1023  } 
+1027  
+1029  ++nc; 
+1048  
+1050  #include <stdio.h> 
+1052  
+1054  /* count characters in input; 2nd version */ 
+1056  main() 
+1058  { 
+1060  double nc; 
+1062  
+1064  for (nc = 0; gechar() != EOF; ++nc) 
+1066  ; 
+1068  printf("%.0f\n", nc); 
+1070  } 
+1095  
+1097  #include <stdio.h> 
+1099  
+1101  /* count lines in input */ 
+1103  main() 
+1105  { 
+1107  int c, nl; 
+1109  
+1111  nl = 0; 
+1113  while ((c = getchar()) != EOF) 
+1115  if (c == '\n') 
+1117  ++nl; 
+1119  printf("%d\n", nl); 
+1121  } 
+1163  
+1165  #include <stdio.h> 
+1167  
+1169  #define IN 1 /* inside a word */ 
+1171  #define OUT 0 /* outside a word */ 
+1173  
+1175  /* count lines, words, and characters in input */ 
+1177  main() 
+1179  { 
+1181  int c, nl, nw, nc, state; 
+1183  
+1185  state = OUT; 
+1187  nl = nw = nc = 0; 
+1189  while ((c = getchar()) != EOF) { 
+1191  ++nc; 
+1193  if (c == '\n') 
+1195  ++nl; 
+1197  if (c == ' ' || c == '\n' || c = '\t') 
+1199  state = OUT; 
+1201  else if (state == OUT) { 
+1203  state = IN; 
+1205  ++nw; 
+1207  } 
+1209  } 
+1211  printf("%d %d %d\n", nl, nw, nc); 
+1213  } 
+1227  
+1229  nl = nw = nc = 0; 
+1235  
+1237  nl = (nw = (nc = 0)); 
+1241  
+1243  if (c == ' ' || c == '\n' || c = '\t') 
+1256  
+1258  if (expression) 
+1260  statement1 
+1262  else 
+1264  statement2 
+1287  
+1289  #include <stdio.h> 
+1291  
+1293  /* count digits, white space, others */ 
+1295  main() 
+1297  { 
+1299  int c, i, nwhite, nother; 
+1301  int ndigit[10]; 
+1303  
+1305  nwhite = nother = 0; 
+1307  for (i = 0; i < 10; ++i) 
+1309  ndigit[i] = 0; 
+1311  
+1313  while ((c = getchar()) != EOF) 
+1315  if (c >= '0' && c <= '9') 
+1317  ++ndigit[c-'0']; 
+1319  else if (c == ' ' || c == '\n' || c == '\t') 
+1321  ++nwhite; 
+1323  else 
+1325  ++nother; 
+1327  
+1329  printf("digits ="); 
+1331  for (i = 0; i < 10; ++i) 
+1333  printf(" %d", ndigit[i]); 
+1335  printf(", white space = %d, other = %d\n", 
+1337  nwhite, nother); 
+1339  } 
+1343  
+1345  digits = 9 3 0 0 0 0 0 0 0 1, white space = 123, other = 345 
+1349  
+1351  int ndigit[10]; 
+1363  
+1365  if (c >= '0' && c <= '9') 
+1369  
+1371  c - '0' 
+1385  
+1387  if (c >= '0' && c <= '9') 
+1389  ++ndigit[c-'0']; 
+1391  else if (c == ' ' || c == '\n' || c == '\t') 
+1393  ++nwhite; 
+1395  else 
+1397  ++nother; 
+1401  
+1403  if (condition1) 
+1405  statement1 
+1407  else if (condition2) 
+1409  statement2 
+1411  ... 
+1413  ... 
+1415  else 
+1417  statementn 
+1467  
+1469  #include <stdio.h> 
+1471  
+1473  int power(int m, int n); 
+1475  
+1477  /* test power function */ 
+1479  main() 
+1481  { 
+1483  int i; 
+1485  
+1487  for (i = 0; i < 10; ++i) 
+1489  printf("%d %d %d\n", i, power(2,i), power(-3,i)); 
+1491  return 0; 
+1493  } 
+1495  
+1497  /* power: raise base to n-th power; n >= 0 */ 
+1499  int power(int base, int n) 
+1501  { 
+1503  int i, p; 
+1505  
+1507  p = 1; 
+1509  for (i = 1; i <= n; ++i) 
+1511  p = p * base; 
+1513  return p; 
+1515  } 
+1519  
+1525  declarations 
+1527  statements 
+1539  
+1541  printf("%d %d %d\n", i, power(2,i), power(-3,i)); 
+1550  
+1552  int power(int base, int n) 
+1565  
+1567  return expression; 
+1584  
+1586  int power(int base, int n); 
+1596  
+1598  int power(int, int); 
+1607  
+1609  /* power: raise base to n-th power; n >= 0 */ 
+1611  /* (old-style version) */ 
+1613  power(base, n) 
+1615  int base, n; 
+1617  { 
+1619  int i, p; 
+1621  
+1623  p = 1; 
+1625  for (i = 1; i <= n; ++i) 
+1627  p = p * base; 
+1629  return p; 
+1631  } 
+1639  
+1641  int power(); 
+1669  /* power: raise base to n-th power; n >= 0; version 2 */ 
+1671  int power(int base, int n) 
+1673  { 
+1675  int p; 
+1677  
+1679  for (p = 1; n > 0; --n) 
+1681  p = p * base; 
+1683  return p; 
+1685  } 
+1708  
+1710  while (there's another line) 
+1712  if (it's longer than the previous longest) 
+1714  (save it) 
+1716  (save its length) 
+1718  print longest line 
+1737  #include <stdio.h> 
+1739  #define MAXLINE 1000 /* maximum input line length */ 
+1741  
+1743  int getline(char line[], int maxline); 
+1745  void copy(char to[], char from[]); 
+1747  
+1749  /* print the longest input line */ 
+1751  main() 
+1753  { 
+1755  int len; /* current line length */ 
+1757  int max; /* maximum length seen so far */ 
+1759  char line[MAXLINE]; /* current input line */ 
+1761  char longest[MAXLINE]; /* longest line saved here */ 
+1763  
+1765  max = 0; 
+1767  while ((len = getline(line, MAXLINE)) > 0) 
+1769  if (len > max) { 
+1771  max = len; 
+1773  copy(longest, line); 
+1775  } 
+1777  if (max > 0) /* there was a line */ 
+1779  printf("%s", longest); 
+1781  return 0; 
+1783  } 
+1785  
+1787  /* getline: read a line into s, return length */ 
+1789  int getline(char s[],int lim) 
+1791  { 
+1793  int c, i; 
+1795  
+1797  for (i=0; i < lim-1 && (c=getchar())!=EOF && c!='\n'; ++i) 
+1799  s[i] = c; 
+1801  if (c == '\n') { 
+1803  s[i] = c; 
+1805  ++i; 
+1807  } 
+1809  s[i] = '\0'; 
+1811  return i; 
+1813  } 
+1815  
+1817  /* copy: copy 'from' into 'to'; assume to is big enough */ 
+1819  void copy(char to[], char from[]) 
+1821  { 
+1823  int i; 
+1825  
+1827  i = 0; 
+1829  while ((to[i] = from[i]) != '\0') 
+1831  ++i; 
+1833  } 
+1841  
+1843  int getline(char s[], int lim); 
+1861  
+1863  "hello\n" 
+1868  
+1929  
+1931  #include <stdio.h> 
+1933  
+1935  #define MAXLINE 1000 /* maximum input line size */ 
+1937  
+1939  int max; /* maximum length seen so far */ 
+1941  char line[MAXLINE]; /* current input line */ 
+1943  char longest[MAXLINE]; /* longest line saved here */ 
+1945  
+1947  int getline(void); 
+1949  void copy(void); 
+1951  
+1953  /* print longest input line; specialized version */ 
+1955  main() 
+1957  { 
+1959  int len; 
+1961  extern int max; 
+1963  extern char longest[]; 
+1965  
+1967  max = 0; 
+1969  while ((len = getline()) > 0) 
+1971  if (len > max) { 
+1973  max = len; 
+1975  copy(); 
+1977  } 
+1979  if (max > 0) /* there was a line */ 
+1981  printf("%s", longest); 
+1983  return 0; 
+1985  } 
+1988  
+1990  /* getline: specialized version */ 
+1992  int getline(void) 
+1994  { 
+1996  int c, i; 
+1998  extern char line[]; 
+2000  
+2002  for (i = 0; i < MAXLINE - 1 
+2004  && (c=getchar)) != EOF && c != '\n'; ++i) 
+2006  line[i] = c; 
+2008  if (c == '\n') { 
+2010  line[i] = c; 
+2012  ++i; 
+2014  } 
+2016  line[i] = '\0'; 
+2018  return i; 
+2020  } 
+2022  
+2024  /* copy: specialized version */ 
+2026  void copy(void) 
+2028  { 
+2030  int i; 
+2032  extern char line[], longest[]; 
+2034  
+2036  i = 0; 
+2038  while ((longest[i] = line[i]) != '\0') 
+2040  ++i; 
+2042  } 
+2116  
+2186  
+2188  short int sh; 
+2190  long int counter; 
+2251  
+2253  '\ooo' 
+2257  
+2259  '\xhh' 
+2263  
+2265  #define VTAB '\013' /* ASCII vertical tab */ 
+2267  #define BELL '\007' /* ASCII bell character */ 
+2271  
+2273  #define VTAB '\xb' /* ASCII vertical tab */ 
+2275  #define BELL '\x7' /* ASCII bell character */ 
+2279  \a 
+2281  alert (bell) character 
+2283  \\ 
+2285  backslash 
+2287  \b 
+2289  backspace 
+2291  \? 
+2293  question mark 
+2295  \f 
+2297  formfeed 
+2299  \' 
+2301  single quote 
+2303  \n 
+2305  newline 
+2307  \" 
+2309  double quote 
+2311  \r 
+2313  carriage return 
+2315  \ooo 
+2317  octal number 
+2319  \t 
+2321  horizontal tab 
+2323  \xhh 
+2325  hexadecimal number 
+2327  \v 
+2329  vertical tab 
+2331  
+2333  
+2345  
+2347  #define MAXLINE 1000 
+2349  char line[MAXLINE+1]; 
+2353  
+2355  #define LEAP 1 /* in leap years */ 
+2357  int days[31+28+LEAP+31+30+31+30+31+31+30+31+30+31]; 
+2363  
+2365  "I am a string" 
+2369  
+2371  "" /* the empty string */ 
+2377  
+2379  "hello, " "world" 
+2383  
+2385  "hello, world" 
+2396  
+2398  /* strlen: return length of s */ 
+2400  int strlen(char s[]) 
+2402  { 
+2404  int i; 
+2406  
+2408  while (s[i] != '\0') 
+2410  ++i; 
+2412  return i; 
+2414  } 
+2426  
+2428  enum boolean { NO, YES }; 
+2434  
+2436  enum escapes { BELL = '\a', BACKSPACE = '\b', TAB = '\t', 
+2438  NEWLINE = '\n', VTAB = '\v', RETURN = '\r' }; 
+2440  
+2442  enum months { JAN = 1, FEB, MAR, APR, MAY, JUN, 
+2444  JUL, AUG, SEP, OCT, NOV, DEC }; 
+2446  /* FEB = 2, MAR = 3, etc. */ 
+2465  
+2467  int lower, upper, step; 
+2469  char c, line[1000]; 
+2474  
+2476  int lower; 
+2478  int upper; 
+2480  int step; 
+2482  char c; 
+2484  char line[1000]; 
+2492  
+2494  char esc = '\\'; 
+2496  int i = 0; 
+2498  int limit = MAXLINE+1; 
+2500  float eps = 1.0e-5; 
+2513  
+2515  const double e = 2.71828182845905; 
+2517  const char msg[] = "warning: "; 
+2522  
+2524  int strlen(const char[]); 
+2534  
+2536  x % y 
+2542  
+2544  if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) 
+2546  printf("%d is a leap year\n", year); 
+2548  else 
+2550  printf("%d is not a leap year\n", year); 
+2566  
+2568  > >= < <= 
+2572  
+2574  == != 
+2584  
+2586  for (i=0; i < lim-1 && (c=getchar()) != '\n' && c != EOF; ++i) 
+2588  s[i] = c; 
+2601  
+2603  i < lim-1 && (c=getchar()) != '\n' && c != EOF 
+2608  
+2610  (c=getchar()) != '\n' 
+2620  
+2622  if (!valid) 
+2626  
+2628  if (valid == 0) 
+2650  
+2652  /* atoi: convert s to integer */ 
+2654  int atoi(char s[]) 
+2656  { 
+2658  int i, n; 
+2660  
+2662  n = 0; 
+2664  for (i = 0; s[i] >= '0' && s[i] <= '9'; ++i) 
+2666  n = 10 * n + (s[i] - '0'); 
+2668  return n; 
+2670  } 
+2674  
+2677  s[i] - '0' 
+2686  
+2688  /* lower: convert c to lower case; ASCII only */ 
+2690  int lower(int c) 
+2692  { 
+2694  if (c >= 'A' && c <= 'Z') 
+2696  return c + 'a' - 'A'; 
+2698  else 
+2700  return c; 
+2702  } 
+2713  
+2715  c >= '0' && c <= '9' 
+2719  
+2721  isdigit(c) 
+2741  
+2743  d = c >= '0' && c <= '9' 
+2784  
+2786  int i; 
+2788  char c; 
+2790  
+2792  i = c; 
+2794  c = i; 
+2812  (type name) expression 
+2820  
+2822  sqrt((double) n) 
+2832  
+2834  double sqrt(double) 
+2838  
+2840  root2 = sqrt(2) 
+2847  
+2849  unsigned long int next = 1; 
+2851  
+2853  /* rand: return pseudo-random integer on 0..32767 */ 
+2855  int rand(void) 
+2857  { 
+2859  next = next * 1103515245 + 12345; 
+2861  return (unsigned int)(next/65536) % 32768; 
+2863  } 
+2865  
+2867  /* srand: set seed for rand() */ 
+2869  void srand(unsigned int seed) 
+2871  { 
+2873  next = seed; 
+2875  } 
+2887  
+2889  if (c == '\n') 
+2891  ++nl; 
+2900  
+2902  x = n++; 
+2906  
+2908  x = ++n; 
+2915  
+2917  if (c == '\n') 
+2919  nl++; 
+2925  
+2927  /* squeeze: delete all c from s */ 
+2929  void squeeze(char s[], int c) 
+2931  { 
+2933  int i, j; 
+2935  
+2937  for (i = j = 0; s[i] != '\0'; i++) 
+2939  if (s[i] != c) 
+2941  s[j++] = s[i]; 
+2943  s[j] = '\0'; 
+2945  } 
+2950  
+2952  if (s[i] != c) { 
+2954  s[j] = s[i]; 
+2956  j++; 
+2958  } 
+2963  
+2965  if (c == '\n') { 
+2967  s[i] = c; 
+2969  ++i; 
+2971  } 
+2975  
+2977  if (c == '\n') 
+2979  s[i++] = c; 
+2986  
+2988  /* strcat: concatenate t to end of s; s must be big enough */ 
+2990  void strcat(char s[], char t[]) 
+2992  { 
+2995  int i, j; 
+2997  
+2999  i = j = 0; 
+3001  while (s[i] != '\0') /* find end of s */ 
+3003  i++; 
+3005  while ((s[i++] = t[j++]) != '\0') /* copy t */ 
+3007  ; 
+3009  } 
+3055  
+3057  n = n & 0177; 
+3063  
+3065  x = x | SET_ON; 
+3088  
+3090  x = x & ~077 
+3102  
+3104  /* getbits: get n bits from position p */ 
+3106  unsigned getbits(unsigned x, int p, int n) 
+3108  { 
+3110  return (x >> (p+1-n)) & ~(~0 << n); 
+3112  } 
+3131  
+3133  i = i + 2 
+3138  
+3140  i += 2 
+3148  
+3150  + - * / % << >> & ^ | 
+3154  
+3156  expr1 op= expr2 
+3160  
+3162  expr1 = (expr1) op (expr2) 
+3166  
+3168  x *= y + 1 
+3172  
+3174  x = x * (y + 1) 
+3178  
+3180  x = x * y + 1 
+3184  
+3186  /* bitcount: count 1 bits in x */ 
+3188  int bitcount(unsigned x) 
+3190  { 
+3192  int b; 
+3194  
+3196  for (b = 0; x != 0; x >>= 1) 
+3198  if (x & 01) 
+3200  b++; 
+3202  return b; 
+3204  } 
+3214  
+3216  yyval[yypv[p3+p4] + yypv[p1]] += 2 
+3225  
+3227  while ((c = getchar()) != EOF) 
+3229  ... 
+3245  
+3247  if (a > b) 
+3249  z = a; 
+3251  else 
+3253  z = b; 
+3259  
+3261  expr1 ? expr2 : expr3 
+3268  
+3270  z = (a > b) ? a : b; /* z = max(a, b) */ 
+3277  
+3279  (n > 0) ? f : n 
+3291  
+3293  for (i = 0; i < n; i++) 
+3295  printf("%6d%c", a[i], (i%10==9 || i==n-1) ? '\n' : ' '); 
+3301  
+3303  printf("You have %d items%s.\n", n, n==1 ? "" : "s"); 
+3326  left to right 
+3330  right to left 
+3334  left to right 
+3338  left to right 
+3342  left to right 
+3346  left to right 
+3350  left to right 
+3354  left to right 
+3358  left to right 
+3362  left to right 
+3366  left to right 
+3370  left to right 
+3374  right to left 
+3378  right to left 
+3382  left to right 
+3393  
+3395  if ((x & MASK) == 0) ... 
+3402  
+3404  x = f() + g(); 
+3413  
+3415  printf("%d %d\n", ++n, power(2, n)); /* WRONG */ 
+3420  
+3422  ++n; 
+3425  printf("%d %d\n", n, power(2, n)); 
+3433  
+3435  a[i] = i++; 
+3451  
+3464  
+3466  x = 0; 
+3468  i++; 
+3470  printf(...); 
+3486  
+3488  if (expression) 
+3490  statement1 
+3492  else 
+3494  statement2 
+3503  
+3505  if (expression) 
+3509  
+3511  if (expression != 0) 
+3520  
+3522  if (n > 0) 
+3524  if (a > b) 
+3526  z = a; 
+3528  else 
+3530  z = b; 
+3535  
+3537  if (n > 0) { 
+3539  if (a > b) 
+3541  z = a; 
+3543  } 
+3545  else 
+3547  z = b; 
+3551  
+3553  if (n > 0) 
+3555  for (i = 0; i < n; i++) 
+3557  if (s[i] > 0) { 
+3559  printf("..."); 
+3561  return i; 
+3563  } 
+3565  else /* WRONG */ 
+3567  printf("error -- n is negative\n"); 
+3575  
+3577  if (a > b) 
+3579  z = a; 
+3581  else 
+3583  z = b; 
+3592  
+3594  if (expression) 
+3596  statement 
+3598  else if (expression) 
+3600  statement 
+3602  else if (expression) 
+3604  statement 
+3606  else if (expression) 
+3608  statement 
+3610  else 
+3612  statement 
+3625  
+3627  else 
+3629  statement 
+3643  
+3645  /* binsearch: find x in v[0] <= v[1] <= ... <= v[n-1] */ 
+3647  int binsearch(int x, int v[], int n) 
+3649  { 
+3651  int low, high, mid; 
+3653  
+3655  low = 0; 
+3657  high = n - 1; 
+3659  while (low <= high) { 
+3661  mid = (low+high)/2; 
+3663  if (x < v[mid]) 
+3665  high = mid + 1; 
+3667  else if (x > v[mid]) 
+3669  low = mid + 1; 
+3671  else /* found match */ 
+3673  return mid; 
+3675  } 
+3677  return -1; /* no match */ 
+3679  } 
+3693  
+3695  switch (expression) { 
+3697  case const-expr: statements 
+3699  case const-expr: statements 
+3701  default: statements 
+3703  } 
+3716  
+3718  #include <stdio.h> 
+3720  
+3722  main() /* count digits, white space, others */ 
+3724  { 
+3726  int c, i, nwhite, nother, ndigit[10]; 
+3728  
+3730  nwhite = nother = 0; 
+3732  for (i = 0; i < 10; i++) 
+3734  ndigit[i] = 0; 
+3736  while ((c = getchar()) != EOF) { 
+3738  switch (c) { 
+3740  case '0': case '1': case '2': case '3': case '4': 
+3742  case '5': case '6': case '7': case '8': case '9': 
+3744  ndigit[c-'0']++; 
+3746  break; 
+3748  case ' ': 
+3750  case '\n': 
+3752  case '\t': 
+3754  nwhite++; 
+3756  break; 
+3758  default: 
+3760  nother++; 
+3762  break; 
+3764  } 
+3766  } 
+3768  printf("digits ="); 
+3770  for (i = 0; i < 10; i++) 
+3772  printf(" %d", ndigit[i]); 
+3774  printf(", white space = %d, other = %d\n", 
+3776  nwhite, nother); 
+3778  return 0; 
+3780  } 
+3808  
+3810  while (expression) 
+3812  statement 
+3820  
+3822  for (expr1; expr2; expr3) 
+3824  statement 
+3828  
+3830  expr1; 
+3832  while (expr2) { 
+3834  statement 
+3836  expr3; 
+3838  } 
+3848  
+3850  for (;;) { 
+3852  ... 
+3854  } 
+3860  
+3862  while ((c = getchar()) == ' ' || c == '\n' || c = '\t') 
+3864  ; /* skip white space characters */ 
+3873  
+3875  for (i = 0; i < n; i++) 
+3877  ... 
+3893  skip white space, if any 
+3900  
+3902  #include <ctype.h> 
+3904  
+3906  /* atoi: convert s to integer; version 2 */ 
+3908  int atoi(char s[]) 
+3910  { 
+3912  int i, n, sign; 
+3914  
+3916  for (i = 0; isspace(s[i]); i++) /* skip white space */ 
+3918  ; 
+3920  sign = (s[i] == '-') ? -1 : 1; 
+3922  if (s[i] == '+' || s[i] == '-') /* skip sign */ 
+3924  i++; 
+3926  for (n = 0; isdigit(s[i]); i++) 
+3928  n = 10 * n + (s[i] - '0'); 
+3930  return sign * n; 
+3932  } 
+3945  
+3947  /* shellsort: sort v[0]...v[n-1] into increasing order */ 
+3949  void shellsort(int v[], int n) 
+3951  { 
+3954  int gap, i, j, temp; 
+3956  
+3958  for (gap = n/2; gap > 0; gap /= 2) 
+3960  for (i = gap; i < n; i++) 
+3962  for (j=i-gap; j>=0 && v[j]>v[j+gap]; j-=gap) { 
+3964  temp = v[j]; 
+3966  v[j] = v[j+gap]; 
+3968  v[j+gap] = temp; 
+3970  } 
+3972  } 
+3987  
+3989  #include <string.h> 
+3991  
+3993  /* reverse: reverse string s in place */ 
+3995  void reverse(char s[]) 
+3997  { 
+3999  int c, i, j; 
+4001  
+4003  for (i = 0, j = strlen(s)-1; i < j; i++, j--) { 
+4005  c = s[i]; 
+4007  s[i] = s[j]; 
+4009  s[j] = c; 
+4011  } 
+4013  } 
+4024  
+4026  for (i = 0, j = strlen(s)-1; i < j; i++, j--) 
+4028  c = s[i], s[i] = s[j], s[j] = c; 
+4044  
+4046  do 
+4048  statement 
+4050  while (expression); 
+4062  
+4064  /* itoa: convert n to characters in s */ 
+4066  void itoa(int n, char s[]) 
+4068  { 
+4070  int i, sign; 
+4072  
+4074  if ((sign = n) < 0) /* record sign */ 
+4076  n = -n; /* make n positive */ 
+4078  i = 0; 
+4080  do { /* generate digits in reverse order */ 
+4082  s[i++] = n % 10 + '0'; /* get next digit */ 
+4084  } while ((n /= 10) > 0); /* delete it */ 
+4086  if (sign < 0) 
+4088  s[i++] = '-'; 
+4090  s[i] = '\0'; 
+4092  reverse(s); 
+4094  } 
+4124  
+4126  /* trim: remove trailing blanks, tabs, newlines */ 
+4128  int trim(char s[]) 
+4130  { 
+4132  int n; 
+4134  
+4136  for (n = strlen(s)-1; n >= 0; n--) 
+4138  if (s[n] != ' ' && s[n] != '\t' && s[n] != '\n') 
+4140  break; 
+4142  s[n+1] = '\0'; 
+4144  return n; 
+4146  } 
+4163  
+4165  for (i = 0; i < n; i++) 
+4167  if (a[i] < 0) /* skip negative elements */ 
+4169  continue; 
+4171  ... /* do positive elements */ 
+4188  
+4190  for ( ... ) 
+4192  for ( ... ) { 
+4194  ... 
+4196  if (disaster) 
+4198  goto error; 
+4200  } 
+4202  ... 
+4204  error: 
+4206  /* clean up the mess */ 
+4217  
+4219  for (i = 0; i < n; i++) 
+4221  for (j = 0; j < m; j++) 
+4223  if (a[i] == b[j]) 
+4225  goto found; 
+4227  /* didn't find any common element */ 
+4229  ... 
+4231  found: 
+4233  /* got one: a[i] == b[j] */ 
+4235  ... 
+4240  
+4242  found = 0; 
+4244  for (i = 0; i < n && !found; i++) 
+4246  for (j = 0; j < m && !found; j++) 
+4248  if (a[i] == b[j]) 
+4250  found = 1; 
+4252  if (found) 
+4254  /* got one: a[i-1] == b[j-1] */ 
+4256  ... 
+4258  else 
+4260  /* didn't find any common element */ 
+4262  ... 
+4269  
+4306  
+4308  Ah Love! could you and I with Fate conspire 
+4310  To grasp this sorry Scheme of Things entire, 
+4312  Would not we shatter it to bits -- and then 
+4314  Re-mould it nearer to the Heart's Desire! 
+4318  
+4320  Ah Love! could you and I with Fate conspire 
+4322  Would not we shatter it to bits -- and then 
+4324  Re-mould it nearer to the Heart's Desire! 
+4328  
+4332  if (the line contains the pattern) 
+4334  print it 
+4362  
+4364  #include <stdio.h> 
+4366  #define MAXLINE 1000 /* maximum input line length */ 
+4368  
+4370  int getline(char line[], int max) 
+4372  int strindex(char source[], char searchfor[]); 
+4374  
+4376  char pattern[] = "ould"; /* pattern to search for */ 
+4378  
+4380  /* find all lines matching pattern */ 
+4382  main() 
+4384  { 
+4386  char line[MAXLINE]; 
+4388  int found = 0; 
+4390  
+4392  while (getline(line, MAXLINE) > 0) 
+4394  if (strindex(line, pattern) >= 0) { 
+4396  printf("%s", line); 
+4398  found++; 
+4400  } 
+4402  return found; 
+4404  } 
+4406  
+4408  /* getline: get line into s, return length */ 
+4410  int getline(char s[], int lim) 
+4412  { 
+4414  int c, i; 
+4416  
+4418  i = 0; 
+4420  while (--lim > 0 && (c=getchar()) != EOF && c != '\n') 
+4422  s[i++] = c; 
+4424  if (c == '\n') 
+4426  s[i++] = c; 
+4429  s[i] = '\0'; 
+4431  return i; 
+4433  } 
+4435  
+4437  /* strindex: return index of t in s, -1 if none */ 
+4439  int strindex(char s[], char t[]) 
+4441  { 
+4443  int i, j, k; 
+4445  
+4447  for (i = 0; s[i] != '\0'; i++) { 
+4449  for (j=i, k=0; t[k]!='\0' && s[j]==t[k]; j++, k++) 
+4451  ; 
+4453  if (k > 0 && t[k] == '\0') 
+4455  return i; 
+4457  } 
+4459  return -1; 
+4461  } 
+4465  
+4471  declarations and statements 
+4477  
+4479  dummy() {} 
+4492  
+4494  return expression; 
+4515  
+4517  cc main.c getline.c strindex.c 
+4524  
+4526  cc main.c getline.o strindex.o 
+4549  
+4551  #include <ctype.h> 
+4553  
+4555  /* atof: convert string s to double */ 
+4557  double atof(char s[]) 
+4559  { 
+4561  double val, power; 
+4563  int i, sign; 
+4565  
+4567  for (i = 0; isspace(s[i]); i++) /* skip white space */ 
+4569  ; 
+4571  sign = (s[i] == '-') ? -1 : 1; 
+4573  if (s[i] == '+' || s[i] == '-') 
+4575  i++; 
+4577  for (val = 0.0; isdigit(s[i]); i++) 
+4579  val = 10.0 * val + (s[i] - '0'); 
+4581  if (s[i] == '.') 
+4583  i++; 
+4585  for (power = 1.0; isdigit(s[i]); i++) { 
+4587  val = 10.0 * val + (s[i] - '0'); 
+4589  power *= 10; 
+4591  } 
+4593  return sign * val / power; 
+4595  } 
+4605  
+4607  #include <stdio.h> 
+4609  
+4611  #define MAXLINE 100 
+4613  
+4615  /* rudimentary calculator */ 
+4617  main() 
+4619  { 
+4621  double sum, atof(char []); 
+4623  char line[MAXLINE]; 
+4625  int getline(char line[], int max); 
+4627  
+4629  sum = 0; 
+4631  while (getline(line, MAXLINE) > 0) 
+4633  printf("\t%g\n", sum += atof(line)); 
+4635  return 0; 
+4637  } 
+4641  
+4643  double sum, atof(char []); 
+4658  
+4660  sum += atof(line) 
+4667  
+4669  double atof(); 
+4679  
+4681  /* atoi: convert string s to integer using atof */ 
+4683  int atoi(char s[]) 
+4685  { 
+4687  double atof(char s[]); 
+4689  
+4692  return (int) atof(s); 
+4694  } 
+4699  
+4701  return expression; 
+4711  
+4713  123.45e-6 
+4754  
+4756  (1 - 2) * (4 + 5) 
+4760  
+4762  1 2 - 4 5 + * 
+4777  
+4779  while (next operator or operand is not end-of-file indicator) 
+4781  if (number) 
+4783  push it 
+4785  else if (operator) 
+4787  pop operands 
+4789  do operation 
+4791  push result 
+4793  else if (newline) 
+4795  pop and print top of stack 
+4797  else 
+4799  error 
+4816  #includes 
+4819  function declarations for main 
+4821  main() { ... } 
+4823  external variables for push and pop 
+4825  
+4828  main() 
+4830  { 
+4832  int type; 
+4834  double op2; 
+4836  char s[MAXOP]; 
+4838  
+4840  while ((type = getop(s)) != EOF) { 
+4842  switch (type) { 
+4844  case NUMBER: 
+4846  push(atof(s)); 
+4848  break; 
+4850  case '+': 
+4852  push(pop() + pop()); 
+4854  break; 
+4856  case '*': 
+4858  push(pop() * pop()); 
+4860  break; 
+4862  case '-': 
+4864  op2 = pop(); 
+4866  push(pop() - op2); 
+4868  break; 
+4870  case '/': 
+4872  op2 = pop(); 
+4874  if (op2 != 0.0) 
+4876  push(pop() / op2); 
+4878  else 
+4880  printf("error: zero divisor\n"); 
+4882  break; 
+4884  case '\n': 
+4886  printf("\t%.8g\n", pop()); 
+4888  default: 
+4890  printf("error: unknown command %s\n", s); 
+4892  break; 
+4894  } 
+4896  } 
+4898  return 0; 
+4900  } 
+4902  void push( double f) { ... } 
+4904  double pop(void) { ... } 
+4906  
+4908  int getop(char s[]) { ... } 
+4917  
+4919  #include <stdio.h> 
+4921  #include <stdlib.h> /* for atof() */ 
+4923  
+4925  #define MAXOP 100 /* max size of operand or operator */ 
+4927  #define NUMBER '0' /* signal that a number was found */ 
+4929  
+4931  int getop(char []); 
+4933  void push(double); 
+4935  double pop(void); 
+4937  
+4939  /* reverse Polish calculator */ 
+4945  
+4947  push(pop() - pop()); /* WRONG */ 
+4952  
+4954  #define MAXVAL 100 /* maximum depth of val stack */ 
+4956  
+4958  int sp = 0; /* next free stack position */ 
+4960  double val[MAXVAL]; /* value stack */ 
+4962  
+4964  /* push: push f onto value stack */ 
+4966  void push(double f) 
+4968  { 
+4970  if (sp < MAXVAL) 
+4972  val[sp++] = f; 
+4974  else 
+4976  printf("error: stack full, can't push %g\n", f); 
+4978  } 
+4980  
+4982  /* pop: pop and return top value from stack */ 
+4984  double pop(void) 
+4986  { 
+4988  if (sp > 0) 
+4990  return val[--sp]; 
+4992  else { 
+4994  printf("error: stack empty\n"); 
+4996  return 0.0; 
+4998  } 
+5000  } 
+5011  
+5013  #include <ctype.h> 
+5015  
+5017  int getch(void); 
+5019  void ungetch(int); 
+5021  
+5023  /* getop: get next character or numeric operand */ 
+5025  int getop(char s[]) 
+5027  { 
+5029  int i, c; 
+5031  
+5033  while ((s[0] = c = getch()) == ' ' || c == '\t') 
+5035  ; 
+5037  s[1] = '\0'; 
+5039  if (!isdigit(c) && c != '.') 
+5041  return c; /* not a number */ 
+5043  i = 0; 
+5045  if (isdigit(c)) /* collect integer part */ 
+5047  while (isdigit(s[++i] = c = getch())) 
+5049  ; 
+5051  if (c == '.') /* collect fraction part */ 
+5054  while (isdigit(s[++i] = c = getch())) 
+5056  ; 
+5058  s[i] = '\0'; 
+5060  if (c != EOF) 
+5062  ungetch(c); 
+5064  return NUMBER; 
+5066  } 
+5088  
+5090  #define BUFSIZE 100 
+5092  
+5094  char buf[BUFSIZE]; /* buffer for ungetch */ 
+5096  int bufp = 0; /* next free position in buf */ 
+5098  
+5100  int getch(void) /* get a (possibly pushed-back) character */ 
+5102  { 
+5104  return (bufp > 0) ? buf[--bufp] : getchar(); 
+5106  } 
+5108  
+5110  void ungetch(int c) /* push character back on input */ 
+5112  { 
+5114  if (bufp >= BUFSIZE) 
+5116  printf("ungetch: too many characters\n"); 
+5118  else 
+5120  buf[bufp++] = c; 
+5122  } 
+5180  
+5182  main() { ... } 
+5184  
+5186  int sp = 0; 
+5188  double val[MAXVAL]; 
+5190  
+5192  void push(double f) { ... } 
+5194  
+5196  double pop(void) { ... } 
+5211  
+5213  int sp; 
+5215  double val[MAXVAL]; 
+5221  
+5223  extern int sp; 
+5225  extern double val[]; 
+5241  in file1: 
+5243  
+5245  extern int sp; 
+5247  extern double val[]; 
+5249  
+5251  void push(double f) { ... } 
+5253  
+5255  double pop(void) { ... } 
+5257  in file2: 
+5259  
+5261  int sp = 0; 
+5263  double val[MAXVAL]; 
+5285  
+5307  
+5309  static char buf[BUFSIZE]; /* buffer for ungetch */ 
+5311  static int bufp = 0; /* next free position in buf */ 
+5313  
+5315  int getch(void) { ... } 
+5317  
+5319  void ungetch(int c) { ... } 
+5348  
+5350  register int x; 
+5352  register char c; 
+5358  
+5360  f(register unsigned m, register long n) 
+5362  { 
+5364  register int i; 
+5366  ... 
+5368  } 
+5388  
+5390  if (n > 0) { 
+5392  int i; /* declare a new i */ 
+5394  
+5396  for (i = 0; i < n; i++) 
+5398  ... 
+5400  } 
+5409  
+5411  int x; 
+5413  int y; 
+5415  
+5417  f(double x) 
+5419  { 
+5421  double y; 
+5423  } 
+5445  
+5447  int x = 1; 
+5449  char squota = '\''; 
+5451  long day = 1000L * 60L * 60L * 24L; /* milliseconds/day */ 
+5459  
+5461  int binsearch(int x, int v[], int n) 
+5463  { 
+5465  int low = 0; 
+5467  int high = n - 1; 
+5469  int mid; 
+5471  ... 
+5473  } 
+5477  
+5479  int low, high, mid; 
+5481  
+5483  low = 0; 
+5485  high = n - 1; 
+5496  
+5498  int days[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } 
+5512  
+5514  char pattern = "ould"; 
+5518  
+5520  char pattern[] = { 'o', 'u', 'l', 'd', '\0' }; 
+5537  
+5539  #include <stdio.h> 
+5541  
+5543  /* printd: print n in decimal */ 
+5545  void printd(int n) 
+5547  { 
+5549  if (n < 0) { 
+5551  putchar('-'); 
+5553  n = -n; 
+5555  } 
+5557  if (n / 10) 
+5559  printd(n / 10); 
+5561  putchar(n % 10 + '0'); 
+5563  } 
+5580  
+5582  /* qsort: sort v[left]...v[right] into increasing order */ 
+5584  void qsort(int v[], int left, int right) 
+5586  { 
+5588  int i, last; 
+5590  void swap(int v[], int i, int j); 
+5592  
+5595  if (left >= right) /* do nothing if array contains */ 
+5597  return; /* fewer than two elements */ 
+5599  swap(v, left, (left + right)/2); /* move partition elem */ 
+5601  last = left; /* to v[0] */ 
+5603  for (i = left + 1; i <= right; i++) /* partition */ 
+5605  if (v[i] < v[left]) 
+5607  swap(v, ++last, i); 
+5609  swap(v, left, last); /* restore partition elem */ 
+5611  qsort(v, left, last-1); 
+5613  qsort(v, last+1, right); 
+5615  } 
+5620  
+5622  /* swap: interchange v[i] and v[j] */ 
+5624  void swap(int v[], int i, int j) 
+5626  { 
+5628  int temp; 
+5630  
+5632  temp = v[i]; 
+5634  v[i] = v[j]; 
+5636  v[j] = temp; 
+5638  } 
+5667  
+5669  #include "filename" 
+5673  
+5675  #include <filename> 
+5698  
+5700  #define name replacement text 
+5714  
+5716  #define forever for (;;) /* infinite loop */ 
+5723  
+5725  #define max(A, B) ((A) > (B) ? (A) : (B)) 
+5731  
+5733  x = max(p+q, r+s); 
+5737  
+5739  x = ((p+q) > (r+s) ? (p+q) : (r+s)); 
+5750  
+5752  max(i++, j++) /* WRONG */ 
+5757  
+5759  #define square(x) x * x /* WRONG */ 
+5771  
+5773  #undef getchar 
+5775  
+5777  int getchar(void) { ... } 
+5784  
+5786  #define dprint(expr) printf(#expr " = %g\n", expr) 
+5790  
+5792  dprint(x/y) 
+5796  
+5798  printf("x/y" " = &g\n", x/y); 
+5802  
+5804  printf("x/y = &g\n", x/y); 
+5814  
+5816  #define paste(front, back) front ## back 
+5840  
+5842  #if !defined(HDR) 
+5844  #define HDR 
+5846  
+5848  /* contents of hdr.h go here */ 
+5850  
+5852  #endif 
+5862  
+5864  #if SYSTEM == SYSV 
+5866  #define HDR "sysv.h" 
+5868  #elif SYSTEM == BSD 
+5870  #define HDR "bsd.h" 
+5872  #elif SYSTEM == MSDOS 
+5874  #define HDR "msdos.h" 
+5876  #else 
+5878  #define HDR "default.h" 
+5880  #endif 
+5882  #include HDR 
+5887  
+5889  #ifndef HDR 
+5891  #define HDR 
+5893  
+5895  /* contents of hdr.h go here */ 
+5897  
+5899  #endif 
+5902  
+5931  
+5935  
+5937  p = &c; 
+5947  
+5949  int x = 1, y = 2, z[10]; 
+5951  int *ip; /* ip is a pointer to int */ 
+5953  
+5956  ip = &x; /* ip now points to x */ 
+5958  y = *ip; /* y is now 1 */ 
+5960  *ip = 0; /* x is now 0 */ 
+5962  ip = &z[0]; /* ip now points to z[0] */ 
+5966  
+5968  int *ip; 
+5974  
+5976  double *dp, atof(char *); 
+5988  
+5990  *ip = *ip + 10; 
+5996  
+5998  y = *ip + 1 
+6002  
+6004  *ip += 1 
+6008  
+6010  ++*ip 
+6014  
+6016  (*ip)++ 
+6025  
+6027  iq = ip 
+6038  
+6040  swap(a, b); 
+6044  
+6046  void swap(int x, int y) /* WRONG */ 
+6048  { 
+6050  int temp; 
+6052  
+6054  temp = x; 
+6056  x = y; 
+6058  y = temp; 
+6060  } 
+6068  
+6070  swap(&a, &b); 
+6075  
+6077  void swap(int *px, int *py) /* interchange *px and *py */ 
+6079  { 
+6081  int temp; 
+6083  
+6085  temp = *px; 
+6087  *px = *py; 
+6089  *py = temp; 
+6091  } 
+6096  
+6111  
+6113  int n, array[SIZE], getint(int *); 
+6115  
+6117  for (n = 0; n < SIZE && getint(&array[n]) != EOF; n++) 
+6119  ; 
+6128  
+6130  #include <ctype.h> 
+6133  
+6135  int getch(void); 
+6137  void ungetch(int); 
+6139  
+6141  /* getint: get next integer from input into *pn */ 
+6143  int getint(int *pn) 
+6145  { 
+6147  int c, sign; 
+6149  
+6151  while (isspace(c = getch())) /* skip white space */ 
+6153  ; 
+6155  if (!isdigit(c) && c != EOF && c != '+' && c != '-') { 
+6157  ungetch(c); /* it is not a number */ 
+6159  return 0; 
+6161  } 
+6163  sign = (c == '-') ? -1 : 1; 
+6165  if (c == '+' || c == '-') 
+6167  c = getch(); 
+6169  for (*pn = 0; isdigit(c), c = getch()) 
+6171  *pn = 10 * *pn + (c - '0'); 
+6173  *pn *= sign; 
+6175  if (c != EOF) 
+6177  ungetch(c); 
+6179  return c; 
+6181  } 
+6202  
+6204  int a[10]; 
+6209  
+6215  
+6217  int *pa; 
+6221  
+6223  pa = &a[0]; 
+6227  
+6231  
+6233  x = *pa; 
+6241  
+6243  *(pa+1) 
+6248  
+6259  
+6261  pa = &a[0]; 
+6266  
+6268  pa = a; 
+6287  
+6289  /* strlen: return length of string s */ 
+6291  int strlen(char *s) 
+6293  { 
+6295  int n; 
+6297  
+6299  for (n = 0; *s != '\0', s++) 
+6301  n++; 
+6303  return n; 
+6305  } 
+6311  
+6313  strlen("hello, world"); /* string constant */ 
+6315  strlen(array); /* char array[100]; */ 
+6317  strlen(ptr); /* char *ptr; */ 
+6323  
+6325  char s[]; 
+6329  
+6331  char *s; 
+6343  
+6345  f(&a[2]) 
+6349  
+6351  f(a+2) 
+6356  
+6358  f(int arr[]) { ... } 
+6362  
+6364  f(int *arr) { ... } 
+6407  
+6409  
+6411  #define ALLOCSIZE 10000 /* size of available space */ 
+6413  
+6415  static char allocbuf[ALLOCSIZE]; /* storage for alloc */ 
+6417  static char *allocp = allocbuf; /* next free position */ 
+6419  
+6421  char *alloc(int n) /* return pointer to n characters */ 
+6423  { 
+6425  if (allocbuf + ALLOCSIZE - allocp >= n) { /* it fits */ 
+6427  allocp += n; 
+6429  return allocp - n; /* old p */ 
+6431  } else /* not enough room */ 
+6433  return 0; 
+6435  } 
+6437  
+6439  void afree(char *p) /* free storage pointed to by p */ 
+6441  { 
+6443  if (p >= allocbuf && p < allocbuf + ALLOCSIZE) 
+6445  allocp = p; 
+6447  } 
+6453  
+6455  static char *allocp = allocbuf; 
+6461  
+6463  static char *allocp = &allocbuf[0]; 
+6469  
+6471  if (allocbuf + ALLOCSIZE - allocp >= n) { /* it fits */ 
+6489  
+6491  if (allocbuf + ALLOCSIZE - allocp >= n) { /* it fits */ 
+6495  
+6497  if (p >= allocbuf && p < allocbuf + ALLOCSIZE) 
+6503  
+6505  p < q 
+6516  
+6518  p + n 
+6529  
+6531  /* strlen: return length of string s */ 
+6533  int strlen(char *s) 
+6535  { 
+6537  char *p = s; 
+6539  
+6541  while (*p != '\0') 
+6543  p++; 
+6545  return p - s; 
+6547  } 
+6576  
+6578  "I am a string" 
+6586  
+6588  printf("hello, world\n"); 
+6596  
+6598  char *pmessage; 
+6602  
+6604  pmessage = "now is the time"; 
+6612  
+6615  char amessage[] = "now is the time"; /* an array */ 
+6617  char *pmessage = "now is the time"; /* a pointer */ 
+6625  
+6632  
+6634  /* strcpy: copy t to s; array subscript version */ 
+6636  void strcpy(char *s, char *t) 
+6638  { 
+6640  int i; 
+6642  
+6644  i = 0; 
+6646  while ((s[i] = t[i]) != '\0') 
+6648  i++; 
+6650  } 
+6654  
+6656  /* strcpy: copy t to s; pointer version */ 
+6658  void strcpy(char *s, char *t) 
+6660  { 
+6662  int i; 
+6664  
+6666  i = 0; 
+6668  while ((*s = *t) != '\0') { 
+6670  s++; 
+6672  t++; 
+6674  } 
+6676  } 
+6685  
+6687  /* strcpy: copy t to s; pointer version 2 */ 
+6689  void strcpy(char *s, char *t) 
+6691  { 
+6693  while ((*s++ = *t++) != '\0') 
+6695  ; 
+6698  } 
+6710  
+6712  /* strcpy: copy t to s; pointer version 3 */ 
+6714  void strcpy(char *s, char *t) 
+6716  { 
+6718  while (*s++ = *t++) 
+6720  ; 
+6722  } 
+6735  
+6737  /* strcmp: return <0 if s<t, 0 if s==t, >0 if s>t */ 
+6739  int strcmp(char *s, char *t) 
+6741  { 
+6743  int i; 
+6745  
+6747  for (i = 0; s[i] == t[i]; i++) 
+6749  if (s[i] == '\0') 
+6751  return 0; 
+6753  return s[i] - t[i]; 
+6755  } 
+6759  
+6761  /* strcmp: return <0 if s<t, 0 if s==t, >0 if s>t */ 
+6763  int strcmp(char *s, char *t) 
+6765  { 
+6767  for ( ; *s == *t; s++, t++) 
+6769  if (*s == '\0') 
+6771  return 0; 
+6773  return *s - *t; 
+6775  } 
+6780  
+6782  *--p 
+6786  
+6788  *p++ = val; /* push val onto stack */ 
+6790  val = *--p; /* pop top of stack into val */ 
+6831  
+6839  read all the lines of input 
+6856  
+6858  #include <stdio.h> 
+6860  #include <string.h> 
+6862  
+6864  #define MAXLINES 5000 /* max #lines to be sorted */ 
+6866  
+6868  char *lineptr[MAXLINES]; /* pointers to text lines */ 
+6870  
+6872  int readlines(char *lineptr[], int nlines); 
+6874  void writelines(char *lineptr[], int nlines); 
+6876  
+6878  void qsort(char *lineptr[], int left, int right); 
+6880  
+6882  /* sort input lines */ 
+6884  main() 
+6886  { 
+6888  int nlines; /* number of input lines read */ 
+6890  
+6892  if ((nlines = readlines(lineptr, MAXLINES)) >= 0) { 
+6894  qsort(lineptr, 0, nlines-1); 
+6896  writelines(lineptr, nlines); 
+6898  return 0; 
+6900  } else { 
+6902  printf("error: input too big to sort\n"); 
+6904  return 1; 
+6906  } 
+6908  } 
+6910  
+6912  #define MAXLEN 1000 /* max length of any input line */ 
+6914  int getline(char *, int); 
+6916  char *alloc(int); 
+6918  
+6920  /* readlines: read input lines */ 
+6922  int readlines(char *lineptr[], int maxlines) 
+6924  { 
+6926  int len, nlines; 
+6928  char *p, line[MAXLEN]; 
+6930  
+6932  nlines = 0; 
+6934  while ((len = getline(line, MAXLEN)) > 0) 
+6936  if (nlines >= maxlines || p = alloc(len) == NULL) 
+6938  return -1; 
+6940  else { 
+6943  line[len-1] = '\0'; /* delete newline */ 
+6945  strcpy(p, line); 
+6947  lineptr[nlines++] = p; 
+6949  } 
+6951  return nlines; 
+6953  } 
+6955  
+6957  /* writelines: write output lines */ 
+6959  void writelines(char *lineptr[], int nlines) 
+6961  { 
+6963  int i; 
+6965  
+6967  for (i = 0; i < nlines; i++) 
+6969  printf("%s\n", lineptr[i]); 
+6971  } 
+6977  
+6979  char *lineptr[MAXLINES] 
+6988  
+6990  /* writelines: write output lines */ 
+6992  void writelines(char *lineptr[], int nlines) 
+6994  { 
+6996  while (nlines-- > 0) 
+6998  printf("%s\n", *lineptr++); 
+7000  } 
+7010  
+7012  /* qsort: sort v[left]...v[right] into increasing order */ 
+7014  void qsort(char *v[], int left, int right) 
+7016  { 
+7018  int i, last; 
+7020  void swap(char *v[], int i, int j); 
+7022  
+7024  if (left >= right) /* do nothing if array contains */ 
+7026  return; /* fewer than two elements */ 
+7028  swap(v, left, (left + right)/2); 
+7030  last = left; 
+7032  for (i = left+1; i <= right; i++) 
+7034  if (strcmp(v[i], v[left]) < 0) 
+7036  swap(v, ++last, i); 
+7038  swap(v, left, last); 
+7040  qsort(v, left, last-1); 
+7043  qsort(v, last+1, right); 
+7045  } 
+7049  
+7051  /* swap: interchange v[i] and v[j] */ 
+7053  void swap(char *v[], int i, int j) 
+7055  { 
+7057  char *temp; 
+7059  
+7061  temp = v[i]; 
+7063  v[i] = v[j]; 
+7065  v[j] = temp; 
+7067  } 
+7087  
+7089  month_day(1988, 60, &m, &d) 
+7099  
+7101  static char daytab[2][13] = { 
+7103  {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}, 
+7105  {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31} 
+7107  }; 
+7109  
+7111  /* day_of_year: set day of year from month & day */ 
+7113  int day_of_year(int year, int month, int day) 
+7115  { 
+7117  int i, leap; 
+7119  leap = year%4 == 0 && year%100 != 0 || year%400 == 0; 
+7121  for (i = 1; i < month; i++) 
+7123  day += daytab[leap][i]; 
+7125  return day; 
+7127  } 
+7129  
+7132  /* month_day: set month, day from day of year */ 
+7134  void month_day(int year, int yearday, int *pmonth, int *pday) 
+7136  { 
+7138  int i, leap; 
+7140  
+7142  leap = year%4 == 0 && year%100 != 0 || year%400 == 0; 
+7144  for (i = 1; yearday > daytab[leap][i]; i++) 
+7146  yearday -= daytab[leap][i]; 
+7148  *pmonth = i; 
+7150  *pday = yearday; 
+7152  } 
+7165  
+7167  daytab[i][j] /* [row][col] */ 
+7171  
+7173  daytab[i,j] /* WRONG */ 
+7190  
+7192  f(int daytab[2][13]) { ... } 
+7196  
+7198  f(int daytab[][13]) { ... } 
+7202  
+7204  f(int (*daytab)[13]) { ... } 
+7210  
+7212  int *daytab[13] 
+7232  
+7234  /* month_name: return name of n-th month */ 
+7236  char *month_name(int n) 
+7238  { 
+7240  static char *name[] = { 
+7242  "Illegal month", 
+7244  "January", "February", "March", 
+7246  "April", "May", "June", 
+7248  "July", "August", "September", 
+7250  "October", "November", "December" 
+7252  }; 
+7254  
+7256  return (n < 1 || n > 12) ? name[0] : name[n]; 
+7258  } 
+7271  
+7273  int a[10][20]; 
+7275  int *b[10]; 
+7292  
+7294  char *name[] = { "Illegal month", "Jan", "Feb", "Mar" }; 
+7296  
+7300  
+7302  char aname[][15] = { "Illegal month", "Jan", "Feb", "Mar" }; 
+7304  
+7321  
+7323  echo hello, world 
+7327  
+7329  hello, world 
+7338  
+7342  
+7344  #include <stdio.h> 
+7346  
+7348  /* echo command-line arguments; 1st version */ 
+7350  main(int argc, char *argv[]) 
+7352  { 
+7354  int i; 
+7356  
+7358  for (i = 1; i < argc; i++) 
+7360  printf("%s%s", argv[i], (i < argc-1) ? " " : ""); 
+7362  printf("\n"); 
+7364  return 0; 
+7366  } 
+7372  
+7374  #include <stdio.h> 
+7376  
+7378  /* echo command-line arguments; 2nd version */ 
+7380  main(int argc, char *argv[]) 
+7382  { 
+7384  while (--argc > 0) 
+7386  printf("%s%s", *++argv, (argc > 1) ? " " : ""); 
+7388  printf("\n"); 
+7390  return 0; 
+7392  } 
+7402  
+7404  printf((argc > 1) ? "%s " : "%s", *++argv); 
+7414  
+7416  #include <stdio.h> 
+7418  #include <string.h> 
+7420  #define MAXLINE 1000 
+7422  
+7424  int getline(char *line, int max); 
+7426  
+7428  /* find: print lines that match pattern from 1st arg */ 
+7430  main(int argc, char *argv[]) 
+7432  { 
+7434  char line[MAXLINE]; 
+7436  int found = 0; 
+7438  
+7440  if (argc != 2) 
+7442  printf("Usage: find pattern\n"); 
+7444  else 
+7446  while (getline(line, MAXLINE) > 0) 
+7448  if (strstr(line, argv[1]) != NULL) { 
+7450  printf("%s", line); 
+7452  found++; 
+7454  } 
+7456  return found; 
+7458  } 
+7471  
+7473  find -x -npattern 
+7481  
+7483  find -nx pattern 
+7487  
+7489  #include <stdio.h> 
+7491  #include <string.h> 
+7493  #define MAXLINE 1000 
+7495  
+7497  int getline(char *line, int max); 
+7499  
+7501  /* find: print lines that match pattern from 1st arg */ 
+7503  main(int argc, char *argv[]) 
+7505  { 
+7507  char line[MAXLINE]; 
+7509  long lineno = 0; 
+7511  int c, except = 0, number = 0, found = 0; 
+7513  
+7515  while (--argc > 0 && (*++argv)[0] == '-') 
+7518  while (c = *++argv[0]) 
+7520  switch (c) { 
+7522  case 'x': 
+7524  except = 1; 
+7526  break; 
+7528  case 'n': 
+7530  number = 1; 
+7532  break; 
+7534  default: 
+7536  printf("find: illegal option %c\n", c); 
+7538  argc = 0; 
+7540  found = -1; 
+7542  break; 
+7544  } 
+7546  if (argc != 1) 
+7548  printf("Usage: find -x -n pattern\n"); 
+7550  else 
+7552  while (getline(line, MAXLINE) > 0) { 
+7554  lineno++; 
+7556  if ((strstr(line, *argv) != NULL) != except) { 
+7558  if (number) 
+7560  printf("%ld:", lineno); 
+7562  printf("%s", line); 
+7564  found++; 
+7566  } 
+7568  } 
+7570  return found; 
+7572  } 
+7590  
+7592  expr 2 3 4 + * 
+7601  
+7603  entab -m +n 
+7612  
+7614  tail -n 
+7642  
+7644  #include <stdio.h> 
+7646  #include <string.h> 
+7648  
+7650  #define MAXLINES 5000 /* max #lines to be sorted */ 
+7652  char *lineptr[MAXLINES]; /* pointers to text lines */ 
+7654  
+7656  int readlines(char *lineptr[], int nlines); 
+7658  void writelines(char *lineptr[], int nlines); 
+7660  
+7662  void qsort(void *lineptr[], int left, int right, 
+7664  int (*comp)(void *, void *)); 
+7666  int numcmp(char *, char *); 
+7668  
+7670  /* sort input lines */ 
+7672  main(int argc, char *argv[]) 
+7674  { 
+7676  int nlines; /* number of input lines read */ 
+7678  int numeric = 0; /* 1 if numeric sort */ 
+7680  
+7682  if (argc > 1 && strcmp(argv[1], "-n") == 0) 
+7684  numeric = 1; 
+7686  if ((nlines = readlines(lineptr, MAXLINES)) >= 0) { 
+7688  qsort((void**) lineptr, 0, nlines-1, 
+7690  (int (*)(void*,void*))(numeric ? numcmp : strcmp)); 
+7692  writelines(lineptr, nlines); 
+7695  return 0; 
+7697  } else { 
+7699  printf("input too big to sort\n"); 
+7701  return 1; 
+7703  } 
+7705  } 
+7719  
+7721  /* qsort: sort v[left]...v[right] into increasing order */ 
+7723  void qsort(void *v[], int left, int right, 
+7725  int (*comp)(void *, void *)) 
+7727  { 
+7729  int i, last; 
+7731  
+7733  void swap(void *v[], int, int); 
+7735  
+7737  if (left >= right) /* do nothing if array contains */ 
+7739  return; /* fewer than two elements */ 
+7741  swap(v, left, (left + right)/2); 
+7743  last = left; 
+7745  for (i = left+1; i <= right; i++) 
+7747  if ((*comp)(v[i], v[left]) < 0) 
+7749  swap(v, ++last, i); 
+7751  swap(v, left, last); 
+7753  qsort(v, left, last-1, comp); 
+7755  qsort(v, last+1, right, comp); 
+7757  } 
+7761  
+7763  int (*comp)(void *, void *) 
+7770  
+7772  if ((*comp)(v[i], v[left]) < 0) 
+7776  
+7778  (*comp)(v[i], v[left]) 
+7783  
+7785  int *comp(void *, void *) /* WRONG */ 
+7793  
+7795  #include <stdlib.h> 
+7797  
+7799  /* numcmp: compare s1 and s2 numerically */ 
+7801  int numcmp(char *s1, char *s2) 
+7803  { 
+7805  double v1, v2; 
+7807  
+7809  v1 = atof(s1); 
+7811  v2 = atof(s2); 
+7813  if (v1 < v2) 
+7815  return -1; 
+7817  else if (v1 > v2) 
+7819  return 1; 
+7821  else 
+7823  return 0; 
+7825  } 
+7830  
+7832  void swap(void *v[], int i, int j;) 
+7834  { 
+7836  void *temp; 
+7838  
+7840  temp = v[i]; 
+7842  v[i] = v[j]; 
+7844  v[j] = temp; 
+7846  } 
+7871  
+7873  int *f(); /* f: function returning pointer to int */ 
+7877  
+7880  int (*pf)(); /* pf: pointer to function returning int */ 
+7894  
+7898  argv: pointer to char 
+7902  daytab: pointer to array[13] of int 
+7906  daytab: array[13] of pointer to int 
+7910  comp: function returning pointer to void 
+7914  comp: pointer to function returning void 
+7918  x: function returning pointer to array[] of 
+7920  pointer to function returning char 
+7924  x: array[3] of pointer to function returning 
+7926  pointer to array[5] of char 
+7931  
+7933  
+7939  (dcl) 
+7941  direct-dcl() 
+7943  direct-dcl[optional size] 
+7945  
+7953  
+7955  (*pfa[])() 
+7963  
+7970  
+7972  /* dcl: parse a declarator */ 
+7974  void dcl(void) 
+7976  { 
+7978  int ns; 
+7980  
+7982  for (ns = 0; gettoken() == '*'; ) /* count *'s */ 
+7984  ns++; 
+7986  dirdcl(); 
+7988  while (ns-- > 0) 
+7990  strcat(out, " pointer to"); 
+7992  } 
+7994  
+7996  /* dirdcl: parse a direct declarator */ 
+7998  void dirdcl(void) 
+8000  { 
+8002  int type; 
+8004  
+8006  if (tokentype == '(') { /* ( dcl ) */ 
+8008  dcl(); 
+8010  if (tokentype != ')') 
+8012  printf("error: missing )\n"); 
+8014  } else if (tokentype == NAME) /* variable name */ 
+8016  strcpy(name, token); 
+8019  else 
+8021  printf("error: expected name or (dcl)\n"); 
+8023  while ((type=gettoken()) == PARENS || type == BRACKETS) 
+8025  if (type == PARENS) 
+8027  strcat(out, " function returning"); 
+8029  else { 
+8031  strcat(out, " array"); 
+8033  strcat(out, token); 
+8035  strcat(out, " of"); 
+8037  } 
+8039  } 
+8049  
+8051  #include <stdio.h> 
+8053  #include <string.h> 
+8055  #include <ctype.h> 
+8057  
+8059  #define MAXTOKEN 100 
+8061  
+8063  enum { NAME, PARENS, BRACKETS }; 
+8065  
+8067  void dcl(void); 
+8069  void dirdcl(void); 
+8071  
+8073  int gettoken(void); 
+8075  int tokentype; /* type of last token */ 
+8077  char token[MAXTOKEN]; /* last token string */ 
+8079  char name[MAXTOKEN]; /* identifier name */ 
+8081  char datatype[MAXTOKEN]; /* data type = char, int, etc. */ 
+8083  char out[1000]; 
+8085  
+8087  main() /* convert declaration to words */ 
+8089  { 
+8091  while (gettoken() != EOF) { /* 1st token on line */ 
+8093  strcpy(datatype, token); /* is the datatype */ 
+8095  out[0] = '\0'; 
+8097  dcl(); /* parse rest of line */ 
+8099  if (tokentype != '\n') 
+8101  printf("syntax error\n"); 
+8103  printf("%s: %s %s\n", name, out, datatype); 
+8105  } 
+8107  return 0; 
+8109  } 
+8115  
+8117  int gettoken(void) /* return next token */ 
+8119  { 
+8121  int c, getch(void); 
+8123  void ungetch(int); 
+8125  char *p = token; 
+8127  
+8129  while ((c = getch()) == ' ' || c == '\t') 
+8132  ; 
+8134  if (c == '(') { 
+8136  if ((c = getch()) == ')') { 
+8138  strcpy(token, "()"); 
+8140  return tokentype = PARENS; 
+8142  } else { 
+8144  ungetch(c); 
+8146  return tokentype = '('; 
+8148  } 
+8150  } else if (c == '[') { 
+8152  for (*p++ = c; (*p++ = getch()) != ']'; ) 
+8154  ; 
+8156  *p = '\0'; 
+8158  return tokentype = BRACKETS; 
+8160  } else if (isalpha(c)) { 
+8162  for (*p++ = c; isalnum(c = getch()); ) 
+8164  *p++ = c; 
+8166  *p = '\0'; 
+8168  ungetch(c); 
+8170  return tokentype = NAME; 
+8172  } else 
+8174  return tokentype = c; 
+8176  
+8178  } 
+8187  
+8189  x () * [] * () char 
+8193  
+8195  char (*(*x())[])() 
+8200  
+8202  /* undcl: convert word descriptions to declarations */ 
+8204  main() 
+8206  { 
+8208  int type; 
+8210  char temp[MAXTOKEN]; 
+8212  
+8214  while (gettoken() != EOF) { 
+8216  strcpy(out, token); 
+8218  while ((type = gettoken()) != '\n') 
+8220  if (type == PARENS || type == BRACKETS) 
+8222  strcat(out, token); 
+8224  else if (type == '*') { 
+8226  sprintf(temp, "(*%s)", out); 
+8228  strcpy(out, temp); 
+8230  } else if (type == NAME) { 
+8232  sprintf(temp, "%s %s", token, out); 
+8234  strcpy(out, temp); 
+8236  } else 
+8238  printf("invalid input at %s\n", token); 
+8240  } 
+8242  return 0; 
+8244  } 
+8255  
+8281  
+8285  
+8287  struct point { 
+8289  int x; 
+8291  int y; 
+8293  }; 
+8310  
+8312  struct { ... } x, y, z; 
+8316  
+8318  int x, y, z; 
+8328  
+8330  struct point pt; 
+8336  
+8338  struct maxpt = { 320, 200 }; 
+8346  structure-name.member 
+8351  
+8353  printf("%d,%d", pt.x, pt.y); 
+8357  
+8359  double dist, sqrt(double); 
+8361  
+8363  dist = sqrt((double)pt.x * pt.x + (double)pt.y * pt.y); 
+8369  
+8371  
+8373  struct rect { 
+8375  struct point pt1; 
+8377  struct point pt2; 
+8379  }; 
+8383  
+8385  struct rect screen; 
+8389  
+8391  screen.pt1.x 
+8409  
+8411  /* makepoint: make a point from x and y components */ 
+8413  struct point makepoint(int x, int y) 
+8415  { 
+8417  struct point temp; 
+8419  
+8421  temp.x = x; 
+8423  temp.y = y; 
+8425  return temp; 
+8427  } 
+8435  
+8437  struct rect screen; 
+8440  struct point middle; 
+8442  struct point makepoint(int, int); 
+8444  
+8446  screen.pt1 = makepoint(0,0); 
+8448  screen.pt2 = makepoint(XMAX, YMAX); 
+8450  middle = makepoint((screen.pt1.x + screen.pt2.x)/2, 
+8452  (screen.pt1.y + screen.pt2.y)/2); 
+8456  
+8458  /* addpoints: add two points */ 
+8460  struct addpoint(struct point p1, struct point p2) 
+8462  { 
+8464  p1.x += p2.x; 
+8466  p1.y += p2.y; 
+8468  return p1; 
+8470  } 
+8480  
+8482  /* ptinrect: return 1 if p in r, 0 if not */ 
+8484  int ptinrect(struct point p, struct rect r) 
+8486  { 
+8488  return p.x >= r.pt1.x && p.x < r.pt2.x 
+8490  && p.y >= r.pt1.y && p.y < r.pt2.y; 
+8492  } 
+8498  
+8500  #define min(a, b) ((a) < (b) ? (a) : (b)) 
+8502  #define max(a, b) ((a) > (b) ? (a) : (b)) 
+8504  
+8506  /* canonrect: canonicalize coordinates of rectangle */ 
+8508  struct rect canonrect(struct rect r) 
+8510  { 
+8512  struct rect temp; 
+8514  
+8516  temp.pt1.x = min(r.pt1.x, r.pt2.x); 
+8518  temp.pt1.y = min(r.pt1.y, r.pt2.y); 
+8520  temp.pt2.x = max(r.pt1.x, r.pt2.x); 
+8522  temp.pt2.y = max(r.pt1.y, r.pt2.y); 
+8524  return temp; 
+8526  } 
+8532  
+8534  struct point *pp; 
+8540  
+8542  struct point origin, *pp; 
+8544  
+8547  pp = &origin; 
+8549  printf("origin is (%d,%d)\n", (*pp).x, (*pp).y); 
+8558  
+8560  p->member-of-structure 
+8564  
+8566  printf("origin is (%d,%d)\n", pp->x, pp->y); 
+8570  
+8572  struct rect r, *rp = &r; 
+8576  
+8578  r.pt1.x 
+8580  rp->pt1.x 
+8582  (r.pt1).x 
+8584  (rp->pt1).x 
+8590  
+8592  struct { 
+8594  int len; 
+8596  char *str; 
+8598  } *p; 
+8602  
+8604  ++p->len 
+8620  
+8622  char *keyword[NKEYS]; 
+8624  int keycount[NKEYS]; 
+8629  
+8631  char *word; 
+8633  int cout; 
+8638  
+8640  struct key { 
+8642  char *word; 
+8644  int count; 
+8646  } keytab[NKEYS]; 
+8651  
+8653  struct key { 
+8655  char *word; 
+8657  int count; 
+8659  }; 
+8661  
+8663  struct key keytab[NKEYS]; 
+8669  
+8671  struct key { 
+8673  char *word; 
+8675  int count; 
+8677  } keytab[] = { 
+8679  "auto", 0, 
+8681  "break", 0, 
+8683  "case", 0, 
+8685  "char", 0, 
+8687  "const", 0, 
+8689  "continue", 0, 
+8691  "default", 0, 
+8693  /* ... */ 
+8695  "unsigned", 0, 
+8697  "void", 0, 
+8699  "volatile", 0, 
+8701  "while", 0 
+8703  }; 
+8708  
+8710  { "auto", 0 }, 
+8712  { "break", 0 }, 
+8714  { "case", 0 }, 
+8716  ... 
+8727  
+8729  #include <stdio.h> 
+8731  #include <ctype.h> 
+8733  #include <string.h> 
+8735  
+8737  #define MAXWORD 100 
+8739  
+8741  int getword(char *, int); 
+8743  int binsearch(char *, struct key *, int); 
+8746  
+8748  /* count C keywords */ 
+8750  main() 
+8752  { 
+8754  int n; 
+8756  char word[MAXWORD]; 
+8758  
+8760  while (getword(word, MAXWORD) != EOF) 
+8762  if (isalpha(word[0])) 
+8764  if ((n = binsearch(word, keytab, NKEYS)) >= 0) 
+8766  keytab[n].count++; 
+8768  for (n = 0; n < NKEYS; n++) 
+8770  if (keytab[n].count > 0) 
+8772  printf("%4d %s\n", 
+8774  keytab[n].count, keytab[n].word); 
+8776  return 0; 
+8778  } 
+8780  
+8782  /* binsearch: find word in tab[0]...tab[n-1] */ 
+8784  int binsearch(char *word, struct key tab[], int n) 
+8786  { 
+8788  int cond; 
+8790  int low, high, mid; 
+8792  
+8794  low = 0; 
+8796  high = n - 1; 
+8798  while (low <= high) { 
+8800  mid = (low+high) / 2; 
+8802  if ((cond = strcmp(word, tab[mid].word)) < 0) 
+8804  high = mid - 1; 
+8806  else if (cond > 0) 
+8808  low = mid + 1; 
+8810  else 
+8812  return mid; 
+8814  } 
+8816  return -1; 
+8818  } 
+8832  size of keytab / size of struct key 
+8837  
+8839  sizeof object 
+8843  
+8845  sizeof (type name) 
+8856  
+8858  #define NKEYS (sizeof keytab / sizeof(struct key)) 
+8862  
+8864  #define NKEYS (sizeof keytab / sizeof(keytab[0])) 
+8878  
+8880  /* getword: get next word or character from input */ 
+8882  int getword(char *word, int lim) 
+8884  { 
+8886  int c, getch(void); 
+8888  void ungetch(int); 
+8890  char *w = word; 
+8892  
+8894  while (isspace(c = getch())) 
+8896  ; 
+8898  if (c != EOF) 
+8900  *w++ = c; 
+8902  if (!isalpha(c)) { 
+8904  *w = '\0'; 
+8906  return c; 
+8908  } 
+8910  for ( ; --lim > 0; w++) 
+8912  if (!isalnum(*w = getch())) { 
+8914  ungetch(*w); 
+8916  break; 
+8918  } 
+8920  *w = '\0'; 
+8922  return word[0]; 
+8924  } 
+8945  
+8947  #include <stdio.h> 
+8949  #include <ctype.h> 
+8951  #include <string.h> 
+8953  #define MAXWORD 100 
+8955  
+8957  int getword(char *, int); 
+8959  struct key *binsearch(char *, struct key *, int); 
+8961  
+8963  /* count C keywords; pointer version */ 
+8965  main() 
+8967  { 
+8969  char word[MAXWORD]; 
+8971  struct key *p; 
+8973  
+8975  while (getword(word, MAXWORD) != EOF) 
+8977  if (isalpha(word[0])) 
+8979  if ((p=binsearch(word, keytab, NKEYS)) != NULL) 
+8981  p->count++; 
+8983  for (p = keytab; p < keytab + NKEYS; p++) 
+8985  if (p->count > 0) 
+8987  printf("%4d %s\n", p->count, p->word); 
+8989  return 0; 
+8991  } 
+8993  
+8995  /* binsearch: find word in tab[0]...tab[n-1] */ 
+8997  struct key *binsearch(char *word, struck key *tab, int n) 
+8999  { 
+9001  int cond; 
+9003  struct key *low = &tab[0]; 
+9005  struct key *high = &tab[n]; 
+9007  struct key *mid; 
+9009  
+9011  while (low < high) { 
+9013  mid = low + (high-low) / 2; 
+9015  if ((cond = strcmp(word, mid->word)) < 0) 
+9017  high = mid; 
+9019  else if (cond > 0) 
+9021  low = mid + 1; 
+9023  else 
+9025  return mid; 
+9027  } 
+9029  return NULL; 
+9031  } 
+9047  
+9049  mid = (low+high) / 2 /* WRONG */ 
+9054  
+9056  mid = low + (high-low) / 2 
+9069  
+9071  for (p = keytab; p < keytab + NKEYS; p++) 
+9081  
+9083  struct { 
+9085  char c; 
+9087  int i; 
+9089  }; 
+9096  
+9098  struct key *binsearch(char *word, struct key *tab, int n) 
+9103  
+9105  struct key * 
+9107  binsearch(char *word, struct key *tab, int n) 
+9141  
+9155  
+9157  struct tnode { /* the tree node: */ 
+9159  char *word; /* points to the text */ 
+9161  int count; /* number of occurrences */ 
+9163  struct tnode *left; /* left child */ 
+9165  struct tnode *right; /* right child */ 
+9167  }; 
+9172  
+9174  struct tnode *left; 
+9181  
+9183  struct t { 
+9185  ... 
+9187  struct s *p; /* p points to an s */ 
+9189  }; 
+9191  struct s { 
+9193  ... 
+9195  struct t *q; /* q points to a t */ 
+9197  }; 
+9203  
+9205  #include <stdio.h> 
+9207  #include <ctype.h> 
+9209  #include <string.h> 
+9211  
+9213  #define MAXWORD 100 
+9215  struct tnode *addtree(struct tnode *, char *); 
+9217  void treeprint(struct tnode *); 
+9219  int getword(char *, int); 
+9221  
+9223  /* word frequency count */ 
+9225  main() 
+9227  { 
+9229  struct tnode *root; 
+9231  char word[MAXWORD]; 
+9233  
+9235  root = NULL; 
+9237  while (getword(word, MAXWORD) != EOF) 
+9239  root = addtree(root, word); 
+9241  treeprint(root); 
+9243  } 
+9253  struct tnode *talloc(void); 
+9257  if (isalpha(word[0])) 
+9259  return 0; 
+9261  
+9264  char *strdup(char *); 
+9266  /* addtree: add a node with w, at or below p */ 
+9268  struct treenode *addtree(struct tnode *p, char *w) 
+9272  
+9274  { 
+9276  int cond; 
+9278  
+9280  if (p == NULL) { /* a new word has arrived */ 
+9282  p = talloc(); /* make a new node */ 
+9284  p->word = strdup(w); 
+9286  p->count = 1; 
+9288  p->left = p->right = NULL; 
+9290  } else if ((cond = strcmp(w, p->word)) == 0) 
+9292  p->count++; /* repeated word */ 
+9294  else if (cond < 0) /* less than into left subtree */ 
+9296  p->left = addtree(p->left, w); 
+9298  else /* greater than into right subtree */ 
+9300  p->right = addtree(p->right, w); 
+9302  return p; 
+9304  } 
+9318  
+9320  /* treeprint: in-order print of tree p */ 
+9322  void treeprint(struct tnode *p) 
+9324  { 
+9326  if (p != NULL) { 
+9328  treeprint(p->left); 
+9330  printf("%4d %s\n", p->count, p->word); 
+9332  treeprint(p->right); 
+9334  } 
+9336  } 
+9366  
+9368  #include <stdlib.h> 
+9370  
+9372  /* talloc: make a tnode */ 
+9374  struct tnode *talloc(void) 
+9376  { 
+9378  return (struct tnode *) malloc(sizeof(struct tnode)); 
+9380  } 
+9385  
+9387  char *strdup(char *s) /* make a duplicate of s */ 
+9389  { 
+9391  char *p; 
+9393  
+9395  p = (char *) malloc(strlen(s)+1); /* +1 for '\0' */ 
+9397  if (p != NULL) 
+9399  strcpy(p, s); 
+9401  return p; 
+9403  } 
+9432  
+9434  #define IN 1 
+9439  
+9441  state = IN; 
+9455  
+9460  
+9462  struct nlist { /* table entry: */ 
+9464  struct nlist *next; /* next entry in chain */ 
+9466  char *name; /* defined name */ 
+9468  char *defn; /* replacement text */ 
+9470  }; 
+9474  
+9476  #define HASHSIZE 101 
+9478  
+9480  static struct nlist *hashtab[HASHSIZE]; /* pointer table */ 
+9486  
+9488  /* hash: form hash value for string s */ 
+9490  unsigned hash(char *s) 
+9492  { 
+9494  unsigned hashval; 
+9496  
+9498  for (hashval = 0; *s != '\0'; s++) 
+9500  hashval = *s + 31 * hashval; 
+9503  return hashval % HASHSIZE; 
+9505  } 
+9514  
+9516  /* lookup: look for s in hashtab */ 
+9518  struct nlist *lookup(char *s) 
+9520  { 
+9522  struct nlist *np; 
+9524  
+9526  for (np = hashtab[hash(s)]; np != NULL; np = np->next) 
+9528  if (strcmp(s, np->name) == 0) 
+9530  return np; /* found */ 
+9532  return NULL; /* not found */ 
+9534  } 
+9538  
+9540  for (ptr = head; ptr != NULL; ptr = ptr->next) 
+9542  ... 
+9548  
+9550  struct nlist *lookup(char *); 
+9552  char *strdup(char *); 
+9554  
+9556  /* install: put (name, defn) in hashtab */ 
+9558  struct nlist *install(char *name, char *defn) 
+9560  { 
+9562  struct nlist *np; 
+9564  unsigned hashval; 
+9566  
+9568  if ((np = lookup(name)) == NULL) { /* not found */ 
+9570  np = (struct nlist *) malloc(sizeof(*np)); 
+9572  if (np == NULL || (np->name = strdup(name)) == NULL) 
+9574  return NULL; 
+9576  hashval = hash(name); 
+9578  np->next = hashtab[hashval]; 
+9580  hashtab[hashval] = np; 
+9582  } else /* already there */ 
+9584  free((void *) np->defn); /*free previous defn */ 
+9586  if ((np->defn = strdup(defn)) == NULL) 
+9588  return np; 
+9590  } 
+9600  return NULL; 
+9606  
+9608  typedef int Length; 
+9610  
+9612  Length len, maxlen; 
+9616  
+9626  Length *lengths[]; 
+9628  typedef char *String; 
+9633  
+9635  String p, lineptr[MAXLINES], alloc(int); 
+9637  int strcmp(String, String); 
+9639  p = (String) malloc(100); 
+9648  
+9650  typedef struct tnode *Treeptr; 
+9652  
+9654  typedef struct tnode { /* the tree node: */ 
+9656  char *word; /* points to the text */ 
+9658  int count; /* number of occurrences */ 
+9660  struct tnode *left; /* left child */ 
+9662  struct tnode *right; /* right child */ 
+9664  } Treenode; 
+9669  
+9671  Treeptr talloc(void) 
+9673  { 
+9675  return (Treeptr) malloc(sizeof(Treenode)); 
+9677  } 
+9686  
+9688  typedef int (*PFI)(char *, char *); 
+9693  
+9695  PFI strcmp, numcmp; 
+9727  
+9729  union u_tag { 
+9731  int ival; 
+9733  float fval; 
+9735  } u; 
+9744  union-name.member 
+9751  
+9753  printf("%d\n", u.ival); 
+9755  if (utype == FLOAT) 
+9759  char *sval; 
+9763  union-pointer->member 
+9765  if (utype == INT) 
+9767  printf("%f\n", u.fval); 
+9770  if (utype == STRING) 
+9772  printf("%s\n", u.sval); 
+9774  printf("bad type %d in utype\n", utype); 
+9780  struct { 
+9782  char *name; 
+9784  int utype; 
+9786  union { 
+9788  float fval; 
+9790  char *sval; 
+9792  } symtab[NSYM]; 
+9796  symtab[i].u.ival 
+9800  *symtab[i].u.sval 
+9802  
+9806  else 
+9808  
+9810  int flags; 
+9812  int ival; 
+9814  } u; 
+9816  
+9818  
+9820  symtab[i].u.sval[0] 
+9848  
+9850  #define KEYWORD 01 
+9852  #define EXTRENAL 02 
+9854  #define STATIC 04 
+9859  
+9861  enum { KEYWORD = 01, EXTERNAL = 02, STATIC = 04 }; 
+9869  
+9871  flags |= EXTERNAL | STATIC; 
+9875  flags &= ~(EXTERNAL | STATIC); 
+9879  if ((flags & (EXTERNAL | STATIC)) == 0) ... 
+9883  
+9885  struct { 
+9887  unsigned int is_extern : 1; 
+9889  unsigned int is_static : 1; 
+9900  flags.is_extern = flags.is_static = 1; 
+9904  flags.is_extern = flags.is_static = 0; 
+9908  if (flags.is_extern == 0 && flags.is_static == 0) 
+9910  ... 
+9919  
+9921  
+9929  unsigned int is_keyword : 1; 
+9931  } flags; 
+9933  
+9935  
+9937  
+9979  
+9986  
+9988  int getchar(void) 
+9997  
+9999  prog <infile 
+10007  
+10009  otherprog | prog 
+10017  
+10019  int putchar(int) 
+10025  
+10027  prog >outfile 
+10031  
+10033  prog | anotherprog 
+10042  
+10044  #include <stdio.h> 
+10056  
+10058  #include <stdio.h> 
+10060  #include <ctype.h> 
+10062  
+10064  main() /* lower: convert input to lower case*/ 
+10066  { 
+10068  int c 
+10070  
+10072  while ((c = getchar()) != EOF) 
+10074  putchar(tolower(c)); 
+10076  return 0; 
+10078  } 
+10097  
+10099  int printf(char *format, arg1, arg2, ...); 
+10189  
+10191  printf("%.*s", max, s); 
+10198  :%s: :hello, world: 
+10200  :%10s: :hello, world: 
+10204  
+10206  :%.10s: :hello, wor: 
+10208  :%-10s: :hello, world: 
+10210  :%.15s: :hello, world: 
+10212  :%-15s: :hello, world : 
+10214  :%15.10s: : hello, wor: 
+10216  :%-15.10s: :hello, wor : 
+10223  printf(s); /* FAILS if s contains % */ 
+10225  printf("%s", s); /* SAFE */ 
+10227  
+10229  int sprintf(char *string, char *format, arg1, arg2, ...); 
+10239  
+10244  
+10248  
+10262  int printf(char *fmt, ...) 
+10278  #include <stdarg.h> 
+10280  
+10282  void minprintf(char *fmt, ...) 
+10284  { 
+10286  char *p, *sval; 
+10288  int ival; 
+10290  va_start(ap, fmt); /* make ap point to 1st unnamed arg */ 
+10292  if (*p != '%') { 
+10294  putchar(*p); 
+10296  } 
+10298  switch (*++p) { 
+10300  ival = va_arg(ap, int); 
+10302  printf("%d", ival); 
+10306  void minprintf(char *fmt, ...) 
+10314  
+10316  /* minprintf: minimal printf with variable argument list */ 
+10318  va_list ap; /* points to each unnamed arg in turn */ 
+10320  double dval; 
+10322  
+10324  for (p = fmt; *p; p++) { 
+10326  continue; 
+10328  case 'd': 
+10330  break; 
+10332  case 'f': 
+10334  dval = va_arg(ap, double); 
+10336  printf("%f", dval); 
+10338  break; 
+10340  for (sval = va_arg(ap, char *); *sval; sval++) 
+10342  putchar(*sval); 
+10344  default: 
+10346  putchar(*p); 
+10348  } 
+10350  } 
+10352  } 
+10358  case 's': 
+10360  break; 
+10362  break; 
+10364  va_end(ap); /* clean up when done */ 
+10372  
+10374  int scanf(char *format, ...) 
+10391  int sscanf(char *string, char *format, arg1, arg2, ...) 
+10411  
+10437  main() /* rudimentary calculator */ 
+10439  { 
+10441  
+10443  sum = 0; 
+10445  printf("\t%.2f\n", sum += v); 
+10447  return 0; 
+10451  
+10455  
+10457  scanf("%d %s %d", &day, monthname, &year); 
+10462  
+10464  
+10466  scanf("%d/%d/%d", &month, &day, &year); 
+10517  
+10519  #include <stdio.h> 
+10521  
+10523  double sum, v; 
+10525  while (scanf("%lf", &v) == 1) 
+10527  } 
+10529  25 Dec 1988 
+10531  
+10533  int day, year; 
+10535  char monthname[20]; 
+10539  int day, month, year; 
+10548  
+10550  while (getline(line, sizeof(line)) > 0) { 
+10552  if (sscanf(line, "%d %s %d", &day, monthname, &year) == 3) 
+10554  printf("valid: %s\n", line); /* 25 Dec 1988 form */ 
+10556  else if (sscanf(line, "%d/%d/%d", &month, &day, &year) == 3) 
+10558  printf("valid: %s\n", line); /* mm/dd/yy form */ 
+10560  else 
+10562  printf("invalid: %s\n", line); /* invalid form */ 
+10564  } 
+10572  
+10574  scanf("%d", n); 
+10578  
+10580  scanf("%d", &n); 
+10601  
+10603  cat x.c y.c 
+10614  
+10616  int putc(int c, FILE *fp) 
+10635  
+10637  FILE *fp; 
+10639  FILE *fopen(char *name, char *mode); 
+10647  
+10649  fp = fopen(name, mode); 
+10667  
+10669  int getc(FILE *fp) 
+10677  FILE *fp; 
+10679  void filecopy(FILE *, FILE *) 
+10681  
+10683  if (argc == 1) /* no args; copy standard input */ 
+10685  filecopy(stdin, stdout); 
+10687  else 
+10689  while(--argc > 0) 
+10691  if ((fp = fopen(*++argv, "r")) == NULL) { 
+10693  printf("cat: can't open %s\n, *argv); 
+10695  return 1; 
+10697  } else { 
+10699  filecopy(fp, stdout); 
+10701  fclose(fp); 
+10703  } 
+10705  return 0; 
+10707  } 
+10709  
+10711  /* filecopy: copy file ifp to file ofp */ 
+10713  void filecopy(FILE *ifp, FILE *ofp) 
+10715  { 
+10717  int c; 
+10719  
+10721  while ((c = getc(ifp)) != EOF) 
+10723  putc(c, ofp); 
+10725  } 
+10732  
+10734  int fclose(FILE *fp) 
+10745  #define getchar() getc(stdin) 
+10747  #define putchar(c) putc((c), stdout) 
+10753  
+10755  int fscanf(FILE *fp, char *format, ...) 
+10757  int fprintf(FILE *fp, char *format, ...) 
+10764  
+10766  #include <stdio.h> 
+10768  
+10770  /* cat: concatenate files, version 1 */ 
+10772  main(int argc, char *argv[]) 
+10774  { 
+10776  
+10796  
+10798  #include <stdio.h> 
+10800  
+10802  /* cat: concatenate files, version 2 */ 
+10804  main(int argc, char *argv[]) 
+10806  { 
+10808  FILE *fp; 
+10810  void filecopy(FILE *, FILE *); 
+10812  char *prog = argv[0]; /* program name for errors */ 
+10814  
+10816  if (argc == 1 ) /* no args; copy standard input */ 
+10818  filecopy(stdin, stdout); 
+10820  else 
+10822  while (--argc > 0) 
+10824  if ((fp = fopen(*++argv, "r")) == NULL) { 
+10826  fprintf(stderr, "%s: can't open %s\n", 
+10828  prog, *argv); 
+10830  exit(1); 
+10832  } else { 
+10834  filecopy(fp, stdout); 
+10836  fclose(fp); 
+10838  } 
+10840  if (ferror(stdout)) { 
+10842  fprintf(stderr, "%s: error writing stdout\n", prog); 
+10844  exit(2); 
+10846  } 
+10848  exit(0); 
+10850  } 
+10872  
+10874  int ferror(FILE *fp) 
+10882  
+10884  int feof(FILE *fp) 
+10894  
+10896  char *fgets(char *line, int maxline, FILE *fp) 
+10905  
+10907  int fputs(char *line, FILE *fp) 
+10917  
+10919  /* fgets: get at most n chars from iop */ 
+10921  char *fgets(char *s, int n, FILE *iop) 
+10923  { 
+10925  register int c; 
+10927  register char *cs; 
+10929  
+10931  cs = s; 
+10933  while (--n > 0 && (c = getc(iop)) != EOF) 
+10936  if ((*cs++ = c) == '\n') 
+10938  break; 
+10940  *cs = '\0'; 
+10942  return (c == EOF && cs == s) ? NULL : s; 
+10944  } 
+10946  
+10948  /* fputs: put string s on file iop */ 
+10950  int fputs(char *s, FILE *iop) 
+10952  { 
+10954  int c; 
+10956  
+10958  while (c = *s++) 
+10960  putc(c, iop); 
+10962  return ferror(iop) ? EOF : 0; 
+10964  } 
+10970  
+10972  /* getline: read a line, return length */ 
+10974  int getline(char *line, int max) 
+10976  { 
+10978  if (fgets(line, max, stdin) == NULL) 
+10980  return 0; 
+10982  else 
+10984  return strlen(line); 
+10986  } 
+11092  
+11094  int ungetc(int c, FILE *fp) 
+11106  
+11108  system("date"); 
+11118  
+11120  void *malloc(size_t n) 
+11124  
+11126  void *calloc(size_t n, size_t size) 
+11135  
+11137  int *ip; 
+11139  
+11141  ip = (int *) calloc(n, sizeof(int)); 
+11150  
+11152  for (p = head; p != NULL; p = p->next) /* WRONG */ 
+11154  free(p); 
+11158  
+11160  for (p = head; p != NULL; p = q) { 
+11162  q = p->next; 
+11164  free(p); 
+11166  } 
+11220  
+11222  #define frand() ((double) rand() / (RAND_MAX+1.0)) 
+11235  
+11284  
+11286  prog <infile >outfile 
+11303  
+11305  int n_read = read(int fd, char *buf, int n); 
+11307  int n_written = write(int fd, char *buf, int n); 
+11323  
+11325  #include "syscalls.h" 
+11327  
+11329  main() /* copy input to output */ 
+11331  { 
+11333  char buf[BUFSIZ]; 
+11335  int n; 
+11337  
+11339  while ((n = read(0, buf, BUFSIZ)) > 0) 
+11341  write(1, buf, n); 
+11343  return 0; 
+11345  } 
+11358  
+11361  #include "syscalls.h" 
+11363  
+11365  /* getchar: unbuffered single character input */ 
+11367  int getchar(void) 
+11369  { 
+11371  char c; 
+11373  
+11375  return (read(0, &c, 1) == 1) ? (unsigned char) c : EOF; 
+11377  } 
+11385  
+11387  #include "syscalls.h" 
+11389  
+11391  /* getchar: simple buffered version */ 
+11393  int getchar(void) 
+11395  { 
+11397  static char buf[BUFSIZ]; 
+11399  static char *bufp = buf; 
+11401  static int n = 0; 
+11403  
+11405  if (n == 0) { /* buffer is empty */ 
+11407  n = read(0, buf, sizeof buf); 
+11409  bufp = buf; 
+11411  } 
+11413  return (--n >= 0) ? (unsigned char) *bufp++ : EOF; 
+11415  } 
+11428  
+11430  #include <fcntl.h> 
+11432  
+11434  int fd; 
+11436  int open(char *name, int flags, int perms); 
+11438  
+11440  fd = open(name, flags, perms); 
+11465  
+11467  fd = open(name, O_RDONLY,0); 
+11474  
+11476  int creat(char *name, int perms); 
+11478  
+11480  fd = creat(name, perms); 
+11497  
+11499  #include <stdio.h> 
+11501  #include <fcntl.h> 
+11503  #include "syscalls.h" 
+11505  #define PERMS 0666 /* RW for owner, group, others */ 
+11507  
+11509  void error(char *, ...); 
+11511  
+11513  /* cp: copy f1 to f2 */ 
+11515  main(int argc, char *argv[]) 
+11517  { 
+11519  int f1, f2, n; 
+11521  char buf[BUFSIZ]; 
+11523  
+11525  if (argc != 3) 
+11527  error("Usage: cp from to"); 
+11529  if ((f1 = open(argv[1], O_RDONLY, 0)) == -1) 
+11531  error("cp: can't open %s", argv[1]); 
+11533  if ((f2 = creat(argv[2], PERMS)) == -1) 
+11535  error("cp: can't create %s, mode %03o", 
+11537  argv[2], PERMS); 
+11539  while ((n = read(f1, buf, BUFSIZ)) > 0) 
+11541  if (write(f2, buf, n) != n) 
+11543  error("cp: write error on file %s", argv[2]); 
+11545  return 0; 
+11547  } 
+11560  
+11562  #include <stdio.h> 
+11564  #include <stdarg.h> 
+11566  
+11568  /* error: print an error message and die */ 
+11570  void error(char *fmt, ...) 
+11572  { 
+11574  va_list args; 
+11576  
+11578  va_start(args, fmt); 
+11580  fprintf(stderr, "error: "); 
+11582  vprintf(stderr, fmt, args); 
+11584  fprintf(stderr, "\n"); 
+11586  va_end(args); 
+11588  exit(1); 
+11590  } 
+11613  
+11615  long lseek(int fd, long offset, int origin); 
+11623  
+11625  lseek(fd, 0L, 2); 
+11630  
+11632  lseek(fd, 0L, 0); 
+11641  
+11643  #include "syscalls.h" 
+11645  
+11647  /*get: read n bytes from position pos */ 
+11649  int get(int fd, long pos, char *buf, int n) 
+11651  { 
+11653  if (lseek(fd, pos, 0) >= 0) /* get to pos */ 
+11655  return read(fd, buf, n); 
+11657  else 
+11659  return -1; 
+11661  } 
+11685  
+11687  #define NULL 0 
+11689  #define EOF (-1) 
+11691  #define BUFSIZ 1024 
+11693  #define OPEN_MAX 20 /* max #files open at once */ 
+11695  
+11697  typedef struct _iobuf { 
+11699  int cnt; /* characters left */ 
+11701  char *ptr; /* next character position */ 
+11703  char *base; /* location of buffer */ 
+11705  int flag; /* mode of file access */ 
+11707  int fd; /* file descriptor */ 
+11709  } FILE; 
+11712  extern FILE _iob[OPEN_MAX]; 
+11714  
+11716  #define stdin (&_iob[0]) 
+11718  #define stdout (&_iob[1]) 
+11720  #define stderr (&_iob[2]) 
+11722  
+11724  enum _flags { 
+11726  _READ = 01, /* file open for reading */ 
+11728  _WRITE = 02, /* file open for writing */ 
+11730  _UNBUF = 04, /* file is unbuffered */ 
+11732  _EOF = 010, /* EOF has occurred on this file */ 
+11734  _ERR = 020 /* error occurred on this file */ 
+11736  }; 
+11738  
+11740  int _fillbuf(FILE *); 
+11742  int _flushbuf(int, FILE *); 
+11744  
+11746  #define feof(p) ((p)->flag & _EOF) != 0) 
+11748  #define ferror(p) ((p)->flag & _ERR) != 0) 
+11750  #define fileno(p) ((p)->fd) 
+11752  
+11754  #define getc(p) (--(p)->cnt >= 0 \ 
+11756  ? (unsigned char) *(p)->ptr++ : _fillbuf(p)) 
+11758  #define putc(x,p) (--(p)->cnt >= 0 \ 
+11760  ? *(p)->ptr++ = (x) : _flushbuf((x),p)) 
+11762  
+11764  #define getchar() getc(stdin) 
+11766  #define putcher(x) putc((x), stdout) 
+11783  
+11785  #include <fcntl.h> 
+11787  #include "syscalls.h" 
+11789  #define PERMS 0666 /* RW for owner, group, others */ 
+11791  
+11793  FILE *fopen(char *name, char *mode) 
+11795  { 
+11797  int fd; 
+11799  FILE *fp; 
+11801  
+11803  if (*mode != 'r' && *mode != 'w' && *mode != 'a') 
+11805  return NULL; 
+11807  for (fp = _iob; fp < _iob + OPEN_MAX; fp++) 
+11809  if ((fp->flag & (_READ | _WRITE)) == 0) 
+11811  break; /* found free slot */ 
+11813  if (fp >= _iob + OPEN_MAX) /* no free slots */ 
+11815  return NULL; 
+11818  
+11820  if (*mode == 'w') 
+11822  fd = creat(name, PERMS); 
+11824  else if (*mode == 'a') { 
+11826  if ((fd = open(name, O_WRONLY, 0)) == -1) 
+11828  fd = creat(name, PERMS); 
+11830  lseek(fd, 0L, 2); 
+11832  } else 
+11834  fd = open(name, O_RDONLY, 0); 
+11836  if (fd == -1) /* couldn't access name */ 
+11838  return NULL; 
+11840  fp->fd = fd; 
+11842  fp->cnt = 0; 
+11844  fp->base = NULL; 
+11846  fp->flag = (*mode == 'r') ? _READ : _WRITE; 
+11848  return fp; 
+11850  } 
+11865  
+11867  #include "syscalls.h" 
+11869  
+11871  /* _fillbuf: allocate and fill input buffer */ 
+11873  int _fillbuf(FILE *fp) 
+11875  { 
+11877  int bufsize; 
+11879  
+11881  if ((fp->flag&(_READ|_EOF_ERR)) != _READ) 
+11883  return EOF; 
+11885  bufsize = (fp->flag & _UNBUF) ? 1 : BUFSIZ; 
+11887  if (fp->base == NULL) /* no buffer yet */ 
+11889  if ((fp->base = (char *) malloc(bufsize)) == NULL) 
+11891  return EOF; /* can't get buffer */ 
+11893  fp->ptr = fp->base; 
+11895  fp->cnt = read(fp->fd, fp->ptr, bufsize); 
+11897  if (--fp->cnt < 0) { 
+11899  if (fp->cnt == -1) 
+11901  fp->flag |= _EOF; 
+11903  else 
+11905  fp->flag |= _ERR; 
+11907  fp->cnt = 0; 
+11909  return EOF; 
+11911  } 
+11913  return (unsigned char) *fp->ptr++; 
+11915  } 
+11920  
+11922  FILE _iob[OPEN_MAX] = { /* stdin, stdout, stderr */ 
+11925  { 0, (char *) 0, (char *) 0, _READ, 0 }, 
+11927  { 0, (char *) 0, (char *) 0, _WRITE, 1 }, 
+11929  { 0, (char *) 0, (char *) 0, _WRITE, | _UNBUF, 2 } 
+11931  }; 
+11943  
+11945  int fseek(FILE *fp, long offset, int origin) 
+11989  
+11991  #define NAME_MAX 14 /* longest filename component; */ 
+11993  /* system-dependent */ 
+11995  
+11997  typedef struct { /* portable directory entry */ 
+11999  long ino; /* inode number */ 
+12001  char name[NAME_MAX+1]; /* name + '\0' terminator */ 
+12003  } Dirent; 
+12005  
+12007  typedef struct { /* minimal DIR: no buffering, etc. */ 
+12009  int fd; /* file descriptor for the directory */ 
+12011  Dirent d; /* the directory entry */ 
+12013  } DIR; 
+12015  
+12017  DIR *opendir(char *dirname); 
+12019  Dirent *readdir(DIR *dfd); 
+12021  void closedir(DIR *dfd); 
+12026  
+12028  char *name; 
+12030  struct stat stbuf; 
+12032  int stat(char *, struct stat *); 
+12034  
+12036  stat(name, &stbuf); 
+12041  
+12043  struct stat /* inode information returned by stat */ 
+12045  { 
+12047  dev_t st_dev; /* device of inode */ 
+12049  ino_t st_ino; /* inode number */ 
+12051  short st_mode; /* mode bits */ 
+12053  short st_nlink; /* number of links to file */ 
+12055  short st_uid; /* owners user id */ 
+12057  short st_gid; /* owners group id */ 
+12059  dev_t st_rdev; /* for special files */ 
+12061  off_t st_size; /* file size in characters */ 
+12063  time_t st_atime; /* time last accessed */ 
+12065  time_t st_mtime; /* time last modified */ 
+12067  time_t st_ctime; /* time originally created */ 
+12069  }; 
+12077  
+12079  #define S_IFMT 0160000 /* type of file: */ 
+12081  #define S_IFDIR 0040000 /* directory */ 
+12083  #define S_IFCHR 0020000 /* character special */ 
+12085  #define S_IFBLK 0060000 /* block special */ 
+12087  #define S_IFREG 0010000 /* regular */ 
+12089  /* ... */ 
+12100  
+12102  #include <stdio.h> 
+12104  #include <string.h> 
+12106  #include "syscalls.h" 
+12108  #include <fcntl.h> /* flags for read and write */ 
+12110  #include <sys/types.h> /* typedefs */ 
+12112  #include <sys/stat.h> /* structure returned by stat */ 
+12114  #include "dirent.h" 
+12116  
+12118  void fsize(char *) 
+12120  
+12122  /* print file name */ 
+12124  main(int argc, char **argv) 
+12126  { 
+12128  if (argc == 1) /* default: current directory */ 
+12130  fsize("."); 
+12132  else 
+12134  while (--argc > 0) 
+12136  fsize(*++argv); 
+12138  return 0; 
+12140  } 
+12147  
+12149  int stat(char *, struct stat *); 
+12151  void dirwalk(char *, void (*fcn)(char *)); 
+12153  
+12155  /* fsize: print the name of file "name" */ 
+12157  void fsize(char *name) 
+12159  { 
+12161  struct stat stbuf; 
+12163  
+12165  if (stat(name, &stbuf) == -1) { 
+12167  fprintf(stderr, "fsize: can't access %s\n", name); 
+12169  return; 
+12171  if ((stbuf.st_mode & S_IFMT) == S_IFDIR) 
+12173  dirwalk(name, fsize); 
+12175  printf("%8ld %s\n", stbuf.st_size, name); 
+12177  } 
+12184  
+12186  #define MAX_PATH 1024 
+12188  
+12190  /* dirwalk: apply fcn to all files in dir */ 
+12192  void dirwalk(char *dir, void (*fcn)(char *)) 
+12195  char name[MAX_PATH]; 
+12197  Dirent *dp; 
+12199  DIR *dfd; 
+12201  
+12203  if ((dfd = opendir(dir)) == NULL) { 
+12205  fprintf(stderr, "dirwalk: can't open %s\n", dir); 
+12207  return; 
+12209  } 
+12211  while ((dp = readdir(dfd)) != NULL) { 
+12213  if (strcmp(dp->name, ".") == 0 
+12215  || strcmp(dp->name, "..")) 
+12217  continue; /* skip self and parent */ 
+12219  fprintf(stderr, "dirwalk: name %s %s too long\n", 
+12221  dir, dp->name); 
+12223  else { 
+12225  sprintf(name, "%s/%s", dir, dp->name); 
+12227  (*fcn)(name); 
+12229  } 
+12231  } 
+12233  closedir(dfd); 
+12235  } 
+12246  
+12248  #ifndef DIRSIZ 
+12250  #endif 
+12252  struct direct { /* directory entry */ 
+12254  ino_t d_ino; /* inode number */ 
+12256  char d_name[DIRSIZ]; /* long name does not have '\0' */ 
+12258  }; 
+12272  
+12274  int fstat(int fd, struct stat *); 
+12276  
+12278  /* opendir: open a directory for readdir calls */ 
+12280  DIR *opendir(char *dirname) 
+12282  { 
+12284  int fd; 
+12286  struct stat stbuf; 
+12289  DIR *dp; 
+12291  if ((fd = open(dirname, O_RDONLY, 0)) == -1 
+12296  return NULL; 
+12300  } 
+12303  /* closedir: close directory opened by opendir */ 
+12307  if (dp) { 
+12311  } 
+12318  #include <sys/dir.h> /* local directory structure */ 
+12320  /* readdir: read directory entries in sequence */ 
+12324  struct direct dirbuf; /* local directory structure */ 
+12327  while (read(dp->fd, (char *) &dirbuf, sizeof(dirbuf)) 
+12331  continue; 
+12337  } 
+12362  
+12388  
+12390  typedef long Align; /* for alignment to long boundary */ 
+12392  
+12394  union header { /* block header */ 
+12397  struct { 
+12399  union header *ptr; /* next block if on free list */ 
+12401  unsigned size; /* size of this block */ 
+12403  } s; 
+12405  Align x; /* force alignment of blocks */ 
+12407  }; 
+12409  
+12411  typedef union header Header; 
+12422  
+12435  
+12437  static Header base; /* empty list to get started */ 
+12439  static Header *freep = NULL; /* start of free list */ 
+12441  
+12443  /* malloc: general-purpose storage allocator */ 
+12445  void *malloc(unsigned nbytes) 
+12447  { 
+12449  Header *p, *prevp; 
+12451  Header *moreroce(unsigned); 
+12453  unsigned nunits; 
+12455  
+12457  nunits = (nbytes+sizeof(Header)-1)/sizeof(header) + 1; 
+12459  if ((prevp = freep) == NULL) { /* no free list yet */ 
+12461  base.s.ptr = freeptr = prevptr = &base; 
+12463  base.s.size = 0; 
+12465  } 
+12468  for (p = prevp->s.ptr; ; prevp = p, p = p->s.ptr) { 
+12470  if (p->s.size >= nunits) { /* big enough */ 
+12472  if (p->s.size == nunits) /* exactly */ 
+12474  prevp->s.ptr = p->s.ptr; 
+12476  else { /* allocate tail end */ 
+12478  p->s.size -= nunits; 
+12480  p += p->s.size; 
+12482  p->s.size = nunits; 
+12484  } 
+12486  freep = prevp; 
+12488  return (void *)(p+1); 
+12490  } 
+12492  if (p == freep) /* wrapped around free list */ 
+12494  if ((p = morecore(nunits)) == NULL) 
+12496  return NULL; /* none left */ 
+12498  } 
+12500  } 
+12517  
+12519  #define NALLOC 1024 /* minimum #units to request */ 
+12521  
+12523  /* morecore: ask system for more memory */ 
+12525  static Header *morecore(unsigned nu) 
+12527  { 
+12529  char *cp, *sbrk(int); 
+12531  Header *up; 
+12533  
+12535  if (nu < NALLOC) 
+12537  nu = NALLOC; 
+12539  if (cp == (char *) -1) /* no space at all */ 
+12541  up = (Header *) cp; 
+12543  up->s.size = nu; 
+12545  free((void *)(up+1)); 
+12547  return freep; 
+12554  
+12556  /* free: put block ap in free list */ 
+12558  void free(void *ap) 
+12560  { 
+12563  Header *bp, *p; 
+12565  
+12567  bp = (Header *)ap - 1; /* point to block header */ 
+12569  for (p = freep; !(bp > p && bp < p->s.ptr); p = p->s.ptr) 
+12571  if (p >= p->s.ptr && (bp > p || bp < p->s.ptr)) 
+12573  break; /* freed block at start or end of arena */ 
+12575  
+12577  if (bp + bp->size == p->s.ptr) { /* join to upper nbr */ 
+12579  bp->s.size += p->s.ptr->s.size; 
+12581  bp->s.ptr = p->s.ptr->s.ptr; 
+12583  } else 
+12585  bp->s.ptr = p->s.ptr; 
+12587  if (p + p->size == bp) { /* join to lower nbr */ 
+12589  p->s.size += bp->s.size; 
+12591  p->s.ptr = bp->s.ptr; 
+12593  } else 
+12595  p->s.ptr = bp; 
+12597  freep = p; 
+12599  } 
+12621  
+12683  
+12685  auto double int struct 
+12687  break else long switch 
+12689  case enum register typedef 
+12691  char extern return union 
+12693  const float short unsigned 
+12695  continue for signed void 
+12697  default goto sizeof volatile 
+12699  do if static while 
+12711  constant: 
+12825  
+12985  arrays of objects of a given type; 
+13194  primary-expression 
+13217  postfix-expression: 
+13227  argument-expression-list: 
+13247  extern int identifier(); 
+13338  unary-expression: 
+13346  unary operator: one of 
+13416  cast-expression: 
+13427  multiplicative-expression: 
+13451  additive-expression: 
+13484  shift-expression: 
+13501  relational-expression: 
+13526  equality-expression: 
+13541  AND-expression: 
+13551  exclusive-OR-expression: 
+13560  inclusive-OR-expression: 
+13569  logical-AND-expression: 
+13583  logical-OR-expression: 
+13599  conditional-expression: 
+13621  assignment-expression: 
+13625  assignment-operator: one of 
+13648  expression: 
+13661  
+13663  f(a, (t=3, t+2), c) 
+13671  constant-expression: 
+13701  declaration: 
+13708  declaration-specifiers: 
+13713  init-declarator-list: 
+13717  init-declarator: 
+13729  storage-class specifier: 
+13781  type-qualifier: 
+13804  struct-or-union-specifier: 
+13808  struct-or-union: 
+13815  struct-declaration-list: 
+13819  struct-declaration: specifier-qualifier-list struct-declarator-list; 
+13821  specifier-qualifier-list: 
+13825  struct-declarator-list: 
+13833  struct-declarator: 
+13838  struct-or-union identifier { struct-declaration-list } 
+13844  struct-or-union identifier 
+13864  struct-or-union identifier; 
+13914  
+13916  struct tnode { 
+13918  char tword[20]; 
+13920  int count; 
+13922  struct tnode *left; 
+13924  struct tnode *right; 
+13929  
+13931  struct tnode s, *sp; 
+13936  sp->count 
+13940  
+13942  s.left 
+13946  
+13948  s.right->tword[0] 
+13958  
+13960  union { 
+13962  struct { 
+13964  int type; 
+13966  } n; 
+13968  struct { 
+13970  int type; 
+13972  int intnode; 
+13974  } ni; 
+13976  struct { 
+13978  int type; 
+13980  float floatnode; 
+13982  } nf; 
+13984  } u; 
+13986  ... 
+13988  u.nf.type = FLOAT; 
+13990  u.nf.floatnode = 3.14; 
+13992  ... 
+13994  if (u.n.type == FLOAT) 
+13996  ... sin(u.nf.floatnode) ... 
+14005  enum-specifier: 
+14009  enumerator-list: 
+14013  enumerator: 
+14039  declarator: 
+14042  direct-declarator: 
+14049  pointer: 
+14054  type-qualifier-list: 
+14079  
+14081  ( D1 ) 
+14090  * type-qualifier-listopt D1 
+14098  
+14100  int *ap[]; 
+14108  
+14110  int i, *pi, *const cpi = &i; 
+14112  const int ci = 3, *pci; 
+14126  D1 [constant-expressionopt] 
+14140  
+14142  float fa[17], *afp[17]; 
+14146  
+14148  static int x3d[3][5][7]; 
+14220  int f(), *fpi(), (*pfi)(); 
+14228  
+14230  int strcpy(char *dest, const char *source), rand(void); 
+14253  initializer: 
+14258  initializer-list: 
+14316  
+14318  int x[] = { 1, 3, 5 }; 
+14323  
+14325  float y[4][3] = { 
+14327  { 1, 3, 5 }, 
+14329  { 2, 4, 6 }, 
+14331  { 3, 5, 7 }, 
+14333  }; 
+14341  
+14343  float y[4][3] = { 
+14345  1, 3, 5, 2, 4, 6, 3, 5, 7 
+14347  }; 
+14353  
+14355  float y[4][3] = { 
+14357  { 1 }, { 2 }, { 3 }, { 4 } 
+14359  }; 
+14365  
+14367  char msg[] = "Syntax error on line %s\n"; 
+14379  type-name: 
+14382  abstract-declarator: 
+14386  direct-abstract-declarator: 
+14395  
+14397  int 
+14399  int * 
+14401  int *[3] 
+14403  int (*)[] 
+14405  int *() 
+14407  int (*[])(void) 
+14420  typedef-name: 
+14429  
+14431  typedef long Blockno, *Blockptr; 
+14433  typedef struct { double r, theta; } Complex; 
+14435  
+14437  Blockno b; 
+14439  Complex z, *zp; 
+14450  
+14454  
+14456  extern int Blockno; 
+14477  statement: 
+14489  labeled-statement: 
+14508  expression-statement: 
+14521  compound-statement: 
+14524  declaration-list: 
+14529  statement-list: 
+14547  selection-statement: 
+14582  iteration-statement: 
+14600  for (expression1; expression2; expression3) statement 
+14604  
+14610  statement 
+14612  expression3; 
+14623  jump-statement: 
+14636  
+14638  while (...) { do { for (...) { 
+14640  ... ... ... 
+14642  contin: ; contin: ; contin: ; 
+14644  } } while (...); } 
+14661  translation-unit: 
+14665  external-declaration: 
+14678  function-definition: 
+14689  direct-declarator ( parameter-type-list ) 
+14726  
+14728  int max(int a, int b, int c) 
+14730  { 
+14732  int m; 
+14734  
+14736  m = (a > b) ? a : b; 
+14738  return (m > c) ? m : c; 
+14740  } 
+14746  
+14748  int max(a, b, c) 
+14750  int a, b, c; 
+14752  { 
+14754  /* ... */ 
+14756  } 
+14903  
+14905  ??= # ??( [ ??< { 
+14907  ??/ \ ??) ] ??> } 
+14909  ??' ^ ??! | ??- ~ 
+14922  # define identifier token-sequence 
+14931  # define identifier (identifier-list) token-sequence 
+14942  # undef identifier 
+14989  
+14991  #define TABSIZE 100 
+14993  int table[TABSIZE]; 
+14997  
+14999  #define ABSDIFF(a, b) ((a)>(b) ? (a)-(b) : (b)-(a)) 
+15008  
+15010  #define tempfile(dir) #dir "%s" 
+15014  
+15016  "/usr/tmp" "%s" 
+15020  
+15022  #define cat(x, y) x ## y 
+15028  
+15030  cat ( 1 , 2 )3 
+15035  
+15037  #define xcat(x, y) cat(x,y) 
+15048  # include <filename> 
+15057  # include "filename" 
+15066  # include token-sequence 
+15079  preprocessor-conditional: 
+15082  if-line: 
+15087  elif-parts: 
+15091  elif-line: 
+15094  else-part: 
+15097  else-line: 
+15114  defined identifier 
+15118  defined (identifier) 
+15125  #ifdef identifier 
+15130  # if defined identifier 
+15142  # line constant "filename" 
+15154  # error token-sequenceopt 
+15163  # pragma token-sequenceopt 
+15172  # 
+15221  translation-unit: 
+15226  external-declaration: 
+15230  function-definition: 
+15233  declaration: 
+15236  declaration-list: 
+15240  declaration-specifiers: 
+15245  storage-class specifier: one of 
+15248  type specifier: one of 
+15252  type-qualifier: one of 
+15255  struct-or-union-specifier: 
+15259  struct-or-union: one of 
+15262  struct-declaration-list: 
+15266  init-declarator-list: 
+15270  init-declarator: 
+15274  struct-declaration: 
+15278  specifier-qualifier-list: 
+15282  struct-declarator-list: 
+15286  struct-declarator: 
+15290  enum-specifier: 
+15294  enumerator-list: 
+15298  enumerator: 
+15302  declarator: 
+15305  direct-declarator: 
+15312  pointer: 
+15316  type-qualifier-list: 
+15320  parameter-type-list: 
+15324  parameter-list: 
+15329  parameter-declaration: 
+15333  identifier-list: 
+15337  initializer: 
+15342  initializer-list: 
+15346  type-name: 
+15349  abstract-declarator: 
+15353  direct-abstract-declarator: 
+15358  typedef-name: 
+15361  statement: 
+15369  labeled-statement: 
+15374  expression-statement: 
+15377  compound-statement: 
+15381  statement-list: 
+15385  selection-statement: 
+15390  iteration-statement: 
+15395  jump-statement: 
+15401  expression: 
+15405  assignment-expression: 
+15409  assignment-operator: one of 
+15412  conditional-expression: 
+15416  constant-expression: 
+15419  logical-OR-expression: 
+15423  logical-AND-expression: 
+15427  inclusive-OR-expression: 
+15432  exclusive-OR-expression: 
+15436  AND-expression: 
+15440  equality-expression: 
+15445  relational-expression: 
+15452  shift-expression: 
+15457  additive-expression: 
+15462  multiplicative-expression: 
+15467  cast-expression: 
+15471  unary-expression: 
+15479  unary operator: one of 
+15482  postfix-expression: 
+15486  postfix-expression[expression] 
+15493  primary-expression: 
+15499  argument-expression-list: 
+15508  control-line: 
+15521  preprocessor-conditional: 
+15524  if-line: 
+15529  elif-parts: 
+15534  elif-line: 
+15537  else-part: 
+15541  
+15552  
+15554  <assert.h> <float.h> <math.h> <stdarg.h> <stdlib.h> 
+15556  <ctype.h> <limits.h> <setjmp.h> <stddef.h> <string.h> 
+15558  <errno.h> <locale.h> <signal.h> <stdio.h> <time.h> 
+15562  #include <header> 
+15690  
+15692  int fprintf(FILE *stream, const char *format, ...) 
+15830  
+16072  fprintf(stderr, "%s: %s\n", s, "error message"); 
+16474  
+16478  size_t n, size_t size, 
+16480  int (*cmp)(const void *keyval, const void *datum)) 
+16488  
+16492  int (*cmp)(const void *, const void *)) 
+16519  void assert(int expression) 
+16523  assert(expression) 
+16527  Assertion failed: expression, file filename, line nnn 
+16539  
+16541  va_list ap; 
+16546  va_start(va_list ap, lastarg); 
+16553  type va_arg(va_list ap, type); 
+16557  
+16559  void va_end(va_list ap); 
+16575  
+16577  if (setjmp(env) == 0) 
+16579  /* get here on direct call */ 
+16581  else 
+16583  /* get here by calling longjmp */ 
+16599  
+16633  
+16635  
+16648  
+16730  
+16732  Sun Jan 3 15:14:13 1988\n\0 
+16739  
+16741  asctime(localtime(tp)) 
+16966  
+16984  
+17022  
+17048  
+17051  
